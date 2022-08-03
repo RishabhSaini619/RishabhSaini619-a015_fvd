@@ -1,18 +1,18 @@
 import 'package:a015_fvd/global_variable.dart';
 import 'package:flutter/material.dart';
 
-class CartScreen extends StatefulWidget {
+class CategoriesScreen extends StatefulWidget {
 
   @override
-  State<CartScreen> createState() => _CartScreenState();
+  State<CategoriesScreen> createState() => _CategoriesScreenState();
 }
 
-class _CartScreenState extends State<CartScreen> {
+class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: TextWidget(
-        tText: " Cart Screen ",
+        tText: " Categories Screen ",
       ),
     );
   }

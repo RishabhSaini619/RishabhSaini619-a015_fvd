@@ -1,4 +1,5 @@
-import 'package:flutter/widgets.dart';
+import 'package:a015_fvd/global_variable.dart';
+import 'package:flutter/material.dart';
 
 class UserProfileScreen extends StatefulWidget {
 
@@ -9,6 +10,10 @@ class UserProfileScreen extends StatefulWidget {
 class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: TextWidget(
+        tText: " User Screen ",
+      ),
+    );
   }
 }

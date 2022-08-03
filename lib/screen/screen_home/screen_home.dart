@@ -1,3 +1,5 @@
+import 'package:a015_fvd/global_variable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,6 +25,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: TextWidget(
+        tText: " Home Screen ",
+      ),
+    );
   }
 }
