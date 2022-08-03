@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class userRegisterScreen extends StatefulWidget {
@@ -9,6 +10,6 @@ class userRegisterScreen extends StatefulWidget {
 class _userRegisterScreenState extends State<userRegisterScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold();
   }
 }
