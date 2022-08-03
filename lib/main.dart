@@ -1,4 +1,5 @@
 import 'package:a015_fvd/global_firebase.dart';
+import 'package:a015_fvd/screen/fetch.dart';
 import 'package:a015_fvd/screen/screen_home/screen_home.dart';
 import 'package:a015_fvd/screen/screen_nav.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: NavBarScreen(),
+      home: Fetch(),
     );
   }
 }

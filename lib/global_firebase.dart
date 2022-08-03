@@ -13,7 +13,7 @@ String userName = "Name";
 
 // Firebase Firestore
 CollectionReference userCollection = FirebaseFirestore.instance.collection("user_profile");
-CollectionReference vegetableCollection = FirebaseFirestore.instance.collection("product_categories");
+CollectionReference productsCollection = FirebaseFirestore.instance.collection("products");
 
 
 // All Document IDs
@@ -21,14 +21,14 @@ List<String> allDocumentIDs = [];
 List<Map> allDocumentsData = [];
 
 // Categories
-List<Map> Fruits = [];
-List<Map> Vegetables = [];
-List<Map> Herbs = [];
-List<Map> Nuts = [];
-List<Map> Spices = [];
-List<Map> Grains = [];
-List<Map> dairy = [];
-List<Map> allCategories = [];
+List<Map> fruits = [];
+List<Map> vegetables = [];
+List<Map> herbs = [];
+List<Map> nuts = [];
+List<Map> spices = [];
+List<Map> grains = [];
+List<Map> daily = [];
+List<Map> allProducts = [];
 
 
 // Categories ID List
@@ -38,8 +38,8 @@ List<String> herbsID = [];
 List<String> nutsID = [];
 List<String> spicesID = [];
 List<String> grainsID = [];
-List<String> dairyID = [];
-List<String> allCategoriesID = [];
+List<String> dailyID = [];
+List<String> allProductsID = [];
 
 //firebase options
 class DefaultFirebaseOptions {
