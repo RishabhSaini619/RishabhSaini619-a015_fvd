@@ -102,8 +102,6 @@ class _NavBarScreenState extends State<NavBarScreen> {
             label: "User",
           ),
         ],
-
-
       ),
     );
   }

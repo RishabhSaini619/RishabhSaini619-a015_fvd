@@ -2,6 +2,7 @@ import 'package:a015_fvd/global_firebase.dart';
 import 'package:a015_fvd/screen/fetch.dart';
 import 'package:a015_fvd/screen/screen_home/screen_home.dart';
 import 'package:a015_fvd/screen/screen_nav.dart';
+import 'package:a015_fvd/screen/screen_splash/screen_splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,12 +33,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'FVD',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
-      home: Fetch(),
+      home: SplashScreen(),
     );
   }
 }

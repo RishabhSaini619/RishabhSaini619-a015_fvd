@@ -11,7 +11,6 @@ bool isFirebaseLoading = false;
 double loadingStatus = 0.04;
 
 class Fetch extends StatefulWidget {
-
   @override
   State<Fetch> createState() => _FetchState();
 }
@@ -22,63 +21,77 @@ class _FetchState extends State<Fetch> {
     fetchItems();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       builder: (context, theme, child) {
         // statusBarColor(context);
         return ScreenUtilInit(
-            designSize: const Size(360, 690),
-            builder: (context, child) {
-              return MaterialApp(
-                theme: ThemeData(
-                  colorScheme: ColorScheme.light(),
-                  appBarTheme: AppBarTheme(
-                    systemOverlayStyle: SystemUiOverlayStyle(
-                        statusBarColor: ColorScheme.light().primary),
+          designSize: Size(
+            1080,
+            2400,
+          ),
+          builder: (context, child) {
+            return MaterialApp(
+              theme: ThemeData(
+                colorScheme: ColorScheme.light(),
+                appBarTheme: AppBarTheme(
+                  systemOverlayStyle: SystemUiOverlayStyle(
+                    statusBarColor: ColorScheme.light().primary,
+                    systemNavigationBarColor: ColorScheme.light().background,
                   ),
                 ),
-                darkTheme: ThemeData(
-                  colorScheme: ColorScheme.dark(),
-                  appBarTheme: AppBarTheme(
-                    systemOverlayStyle: SystemUiOverlayStyle(
-                        statusBarColor: ColorScheme.dark().background),
+              ),
+              darkTheme: ThemeData(
+                colorScheme: ColorScheme.dark(),
+                appBarTheme: AppBarTheme(
+                  systemOverlayStyle: SystemUiOverlayStyle(
+                    statusBarColor: ColorScheme.dark().primary,
+                    systemNavigationBarColor: ColorScheme.dark().background,
                   ),
                 ),
-                themeMode: theme,
-                debugShowCheckedModeBanner: false,
-                home: isFirebaseLoading ? SplashScreen() : NavBarScreen(),
-              );
-            });
+              ),
+              themeMode: theme,
+              debugShowCheckedModeBanner: false,
+              home: isFirebaseLoading ? SplashScreen() : NavBarScreen(),
+            );
+          },
+        );
       },
       valueListenable: currentTheme,
     );
   }
+
   Future<void> fetchItems() async {
     setState(() {
       isFirebaseLoading = true;
     });
-    loadingStatus = 0.158;
-    setState(() {});
-    await docIdList("Spicy");
-
-    loadingStatus = 0.316;
-    setState(() {});
-    await docIdList("Leaf");
-
-    loadingStatus = 0.475;
-    setState(() {});
-    await docIdList("Daily");
-
-    loadingStatus = 0.633;
-    setState(() {});
-    await docIdList("Seeds");
-
-    loadingStatus = 0.791;
+    loadingStatus = 0.1;
     setState(() {});
     await docIdList("Fruits");
 
-    loadingStatus = 0.98;
+    loadingStatus = 0.2;
+    setState(() {});
+    await docIdList("Vegetables");
+
+    loadingStatus = 0.3;
+    setState(() {});
+    await docIdList("Herbs");
+
+    loadingStatus = 0.4;
+    setState(() {});
+    await docIdList("Nuts");
+
+    loadingStatus = 0.5;
+    setState(() {});
+    await docIdList("Spices");
+
+    loadingStatus = 0.6;
+    setState(() {});
+    await docIdList("Grains");
+
+    loadingStatus = 0.7;
     setState(() {});
     await docIdList("Dairy");
 
@@ -96,12 +109,12 @@ class _FetchState extends State<Fetch> {
 
   Future<List> docIdList(String category) async {
     QuerySnapshot querySnapshot = await productsCollection
-        .where("Products_Categories", arrayContainsAny: [category]).get();
+        .where("products_category", arrayContainsAny: [category]).get();
     Map map;
     for (var element in querySnapshot.docs) {
       allDocumentIDs.add(element.id);
       DocumentSnapshot<Map> doc =
-      await productsCollection.doc(element.id).get();
+          await productsCollection.doc(element.id).get();
       map = doc.data();
       allDocumentsData.add(map);
 
@@ -112,39 +125,41 @@ class _FetchState extends State<Fetch> {
         allProductsID.add(element.id);
       } else if (category == "Vegetables") {
         vegetables.add(map);
+        vegetablesID.add(element.id);
         allProducts.add(map);
         allProductsID.add(element.id);
-        vegetablesID.add(element.id);
       } else if (category == "Herbs") {
         herbs.add(map);
+        herbsID.add(element.id);
         allProducts.add(map);
         allProductsID.add(element.id);
-        herbsID.add(element.id);
       } else if (category == "Nuts") {
         nuts.add(map);
+        nutsID.add(element.id);
         allProducts.add(map);
         allProductsID.add(element.id);
-        nutsID.add(element.id);
+
       } else if (category == "Spices") {
         spices.add(map);
+        spicesID.add(element.id);
         allProducts.add(map);
         allProductsID.add(element.id);
-        spicesID.add(element.id);
       } else if (category == "Grains") {
         grains.add(map);
+        grainsID.add(element.id);
         allProducts.add(map);
         allProductsID.add(element.id);
-        grainsID.add(element.id);
+
       } else if (category == "Daily") {
         daily.add(map);
+        dailyID.add(element.id);
         allProducts.add(map);
         allProductsID.add(element.id);
-        dailyID.add(element.id);
       }
 
-      print("${map["Product_Name"]}");
+      print("${map["product_name"]}");
     }
 
-    print("\n\n $category \n\n $map \n\n");
+    print("\n $category \n\n $map \n\n\n");
   }
 }

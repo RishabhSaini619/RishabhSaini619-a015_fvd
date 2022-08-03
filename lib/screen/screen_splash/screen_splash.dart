@@ -57,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => NavBarScreen(),
+        builder: (context) => Fetch(),
         // LoginScreen(),
       ),
     );
