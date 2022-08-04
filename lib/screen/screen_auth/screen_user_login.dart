@@ -1,29 +1,29 @@
+import 'package:a015_fvd/global/global_variable.dart';
+
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class UserLoginScreen extends StatefulWidget {
-
   @override
   State<UserLoginScreen> createState() => _UserLoginScreenState();
 }
 
-class _UserLoginScreenState extends State<UserLoginScreen> with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-
+class _UserLoginScreenState extends State<UserLoginScreen>
+    with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this);
+    animationControllerUserLogin = AnimationController(vsync: this);
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    animationControllerUserLogin.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold();
   }
 }
-

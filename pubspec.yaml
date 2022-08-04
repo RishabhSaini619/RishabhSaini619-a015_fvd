@@ -43,6 +43,7 @@ flutter:
 
   assets:
     - assets/categories
+    - assets/darkMode
 
   # fonts:
   #   - family: Schyler

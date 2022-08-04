@@ -11,13 +11,15 @@ AnimationController animationControllerCart;
 AnimationController animationControllerUserProfile;
 AnimationController animationControllerSearch;
 AnimationController animationControllerWishList;
+AnimationController animationControllerUserUpdate;
+AnimationController animationControllerUserRegister;
+AnimationController animationControllerUserLogin;
 
 //
-  bool isLoading = false;
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-
+bool isLoading = false;
+TextEditingController nameController = TextEditingController();
+TextEditingController emailController = TextEditingController();
+TextEditingController phoneNumberController = TextEditingController();
 
 // CartStatus
 bool isCartPressed = false;
@@ -33,13 +35,10 @@ ValueNotifier<int> wishListItemCount = ValueNotifier(wishListItems.length);
 //
 int findIDUsingIndexWhere(String name) {
   final index = allDocumentsData.indexWhere((element) =>
-  (element["product_name"].toLowerCase()) == name.toLowerCase());
+      (element["product_name"].toLowerCase()) == name.toLowerCase());
   return index;
 }
 
 Future<String> loadImage(BuildContext context, String ID) async {
-  return await FirebaseStorage.instance
-      .ref()
-      .child("$ID.jpg")
-      .getDownloadURL();
+  return await FirebaseStorage.instance.ref().child("$ID.jpg").getDownloadURL();
 }

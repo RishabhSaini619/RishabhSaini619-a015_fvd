@@ -2,13 +2,8 @@ import 'package:a015_fvd/global/global_theme.dart';
 import 'package:a015_fvd/global/global_variable.dart';
 import 'package:a015_fvd/screen/screen_auth/screen_user_update.dart';
 import 'package:a015_fvd/screen/screen_auth/widget_user_exit.dart';
-import 'package:a015_fvd/screen/screen_user/screen_inner_wishlist.dart';
-import 'package:a015_fvd/screen/screen_user/screen_user_profile_components.dart';
 import 'package:a015_fvd/widget/widget_text_widget.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UserProfileScreen extends StatefulWidget {
   @override
@@ -58,27 +53,22 @@ class _UserProfileScreenState extends State<UserProfileScreen>
           SwitchListTile(
             title: TextWidget(
               isTitle: true,
-              tText: darkMode
-                  ? "Dark Theme"
-                  : " Light Theme",
+              tText: darkMode ? "Dark Theme" : " Light Theme",
               tColor: themeData.colorScheme.primary,
               tSize: 24,
             ),
             secondary: Icon(
-              darkMode
-                  ? Icons.dark_mode_outlined
-                  : Icons.light_mode_outlined,
+              darkMode ? Icons.dark_mode_outlined : Icons.light_mode_outlined,
             ),
             activeColor: Colors.white,
             activeTrackColor: Colors.blue,
             activeThumbImage: const AssetImage(
-              "assets/images/darkMode/moonIcon.png",
+              "assets/darkMode/moonIcon.png",
             ),
             autofocus: true,
             inactiveThumbColor: Colors.white,
             inactiveTrackColor: Colors.grey,
-            inactiveThumbImage:
-            const AssetImage("assets/images/darkMode/sunIcon.png"),
+            inactiveThumbImage: const AssetImage("assets/darkMode/sunIcon.png"),
             onChanged: (bool value) {
               setState(() {
                 darkMode = value;

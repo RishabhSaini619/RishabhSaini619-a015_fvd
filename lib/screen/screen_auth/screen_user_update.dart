@@ -1,3 +1,4 @@
+import 'package:a015_fvd/global/global_variable.dart';
 import 'package:flutter/material.dart';
 
 class UserUpdateScreen extends StatefulWidget {
@@ -7,22 +8,21 @@ class UserUpdateScreen extends StatefulWidget {
 }
 
 class _UserUpdateScreenState extends State<UserUpdateScreen> with SingleTickerProviderStateMixin {
-   AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this);
+    animationControllerUserUpdate = AnimationController(vsync: this);
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    animationControllerUserUpdate.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold();
   }
 }
