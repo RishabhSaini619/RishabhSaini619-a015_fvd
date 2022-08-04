@@ -1,4 +1,5 @@
 import 'package:a015_fvd/global_firebase.dart';
+import 'package:a015_fvd/screen_inner_product_detail_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,13 +25,13 @@ class _ProductThumbnailState extends State<ProductThumbnail> {
       child: InkWell(
         borderRadius: BorderRadius.circular(20.h),
         onTap: () async {
-          String src = await FireStoreService.loadImage(context, widget.ID);
+          String source = await FireStoreService.loadImage(context, widget.ID);
           Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => new ProductDetailView(
                   name: widget.name,
-                  src: src,
+                  source: source,
                   data: widget.data,
                   ID: widget.ID,
                 ),

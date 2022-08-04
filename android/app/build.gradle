@@ -31,7 +31,7 @@ android {
     ndkVersion flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
+        scrCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
@@ -39,8 +39,8 @@ android {
         jvmTarget = '1.8'
     }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+    scrSets {
+        main.java.scrDirs += 'src/main/kotlin'
     }
 
     defaultConfig {
@@ -64,7 +64,7 @@ android {
 }
 
 flutter {
-    source '../..'
+    scr '../..'
 }
 
 dependencies {
