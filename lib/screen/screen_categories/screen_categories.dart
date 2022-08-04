@@ -35,7 +35,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
         height: 80.h,
         child: ListView.builder(
           shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
+          scrollDirection: Axis.vertical,
           itemCount: allCategories.length,
           itemBuilder: (context, index) {
             return Center(
@@ -69,11 +69,10 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                     padding: EdgeInsets.only(left: 20, top: 15, bottom: 15),
                     child: Column(
                       children: [
-                        SvgPicture.asset(
+                        Image.asset(
                           allCategories[index]["image"],
                           height: 20.0,
                           width: 20.0,
-                          allowDrawingOutsideViewBox: true,
                           color: themeData.colorScheme.primary.withOpacity(0.6),
                         ),
                         SizedBox(width: 20),

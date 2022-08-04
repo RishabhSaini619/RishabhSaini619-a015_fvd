@@ -54,49 +54,49 @@ List<Map> allCategories = [
   //Fruits
   {
     "name": "Fruits",
-    "image": "assets/Fruits.svg",
+    "image": "assets/categories/fruits.png/",
     "category": fruits,
     "idList": fruitsID
   },
   //Vegetables
   {
     "name": "Vegetables",
-    "image": "assets/Fruits.svg",
+    "image": "assets/categories/vegetables.png",
     "category": vegetables,
     "idList": vegetablesID
   },
   //Daily
   {
     "name": "Daily",
-    "image": "assets/Fruits.svg",
+    "image": "assets/categories/daily.png",
     "category": daily,
     "idList": dailyID
   },
   //Grains
   {
     "name": "Grains",
-    "image": "assets/Fruits.svg",
+    "image": "assets/categories/grains.png",
     "category": grains,
     "idList": grainsID
   },
   //Herbs
   {
     "name": "Herbs",
-    "image": "assets/Fruits.svg",
+    "image": "assets/categories/herbs.png",
     "category": herbs,
     "idList": herbsID
   },
   //Nuts
   {
     "name": "Nuts",
-    "image": "assets/Vegetables.svg",
+    "image": "assets/categories/nuts.png",
     "category": nuts,
     "idList": nutsID
   },
   //Spices
   {
     "name": "Spices",
-    "image": "assets/Dairy.svg",
+    "image": "assets/categories/spices.png",
     "category": spicesID,
     "idList": spicesID
   },
