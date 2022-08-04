@@ -1,4 +1,5 @@
 import 'package:a015_fvd/global/global_firebase.dart';
+import 'package:a015_fvd/global/global_variable.dart';
 import 'package:a015_fvd/widget/widget_fetch.dart';
 import 'package:a015_fvd/screen/screen_home/screen_home.dart';
 import 'package:a015_fvd/screen/screen_navigatin_bar/screen_nav.dart';
@@ -14,7 +15,6 @@ void main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  SharedPreferences userPreferences;
   userPreferences = await SharedPreferences.getInstance();
 
   try {

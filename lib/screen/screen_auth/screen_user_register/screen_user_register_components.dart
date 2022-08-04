@@ -1,6 +1,8 @@
+import 'package:a015_fvd/global/global_variable.dart';
 import 'package:a015_fvd/screen/screen_auth/screen_user_login/screen_user_login.dart';
 import 'package:a015_fvd/screen/screen_home/screen_home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 class UserRegisterScreenImage extends StatelessWidget {
   @override
@@ -70,7 +72,12 @@ class UserRegisterScreenFields extends StatelessWidget {
   }
 }
 
-class UserRegisterTextFields extends StatelessWidget {
+class UserRegisterTextFields extends StatefulWidget {
+  @override
+  State<UserRegisterTextFields> createState() => _UserRegisterTextFieldsState();
+}
+
+class _UserRegisterTextFieldsState extends State<UserRegisterTextFields> {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
@@ -110,7 +117,7 @@ class UserRegisterTextFields extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Register',
+                'User Register',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -119,34 +126,132 @@ class UserRegisterTextFields extends StatelessWidget {
               SizedBox(
                 height: size.height * 0.04,
               ),
-              TextField(
+              //name
+              TextFormField(
+                textInputAction: TextInputAction.next,
+                controller: nameController,
+                keyboardType: TextInputType.name,
+                validator: (value) => validateName(value),
+                style: TextStyle(
+                  color: Color(0xffF5591F),
+                ),
+                cursorColor: Color(0xffF5591F),
                 decoration: InputDecoration(
-                  hintText: 'Name',
+                  icon: Icon(
+                    Icons.person,
+                    color: Color(0xffF5591F),
+                  ),
+                  hintText: "Name",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
                 ),
               ),
               SizedBox(
                 height: size.height * 0.02,
               ),
-              TextField(
+              //phone
+              TextFormField(
+                textInputAction: TextInputAction.next,
+                controller: phoneNumberController,
+                keyboardType: TextInputType.name,
+                validator: (value) => validatePhoneNumber(value),
+                style: TextStyle(
+                  color: Color(0xffF5591F),
+                ),
+                cursorColor: Color(0xffF5591F),
                 decoration: InputDecoration(
-                  hintText: 'Phone',
+                  icon: Icon(
+                    Icons.person,
+                    color: Color(0xffF5591F),
+                  ),
+                  hintText: "First Name",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
                 ),
               ),
               SizedBox(
                 height: size.height * 0.02,
               ),
-              TextField(
+              //email
+              TextFormField(
+                textInputAction: TextInputAction.next,
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                validator: (value) => validateEmail(value),
+                style: TextStyle(
+                  color: Color(0xffF5591F),
+                ),
+                cursorColor: Color(0xffF5591F),
                 decoration: InputDecoration(
-                  hintText: 'Email',
+                  icon: Icon(
+                    Icons.email,
+                    color: Color(0xffF5591F),
+                  ),
+                  suffixIcon: IconButton(
+                    onPressed: () async {
+                      print("Searching email");
+                      bool existOrNot = await checkUserId('${emailController.text}');
+                      if (existOrNot) {
+                      } else
+                        getUserDetail('${emailController.text}');
+                    },
+                    icon: Icon(
+                      IconlyLight.search,
+                      size: 20,
+                      color: Color(0xffF5591F),
+                    ),
+                  ),
+                  hintText: "Email & check for availability",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
                 ),
               ),
               SizedBox(
                 height: size.height * 0.02,
               ),
-              TextField(
-                obscureText: true,
+              //pass
+              TextFormField(
+                textInputAction: TextInputAction.done,
+                onEditingComplete: () {
+                  UserRegisterButtons();
+                },
+                controller: passwordController,
+                keyboardType: TextInputType.visiblePassword,
+                validator: (value) => validatePassword(value),
+                obscureText: obscureTextData,
+                style: const TextStyle(
+                  color: Color(0xffF5591F),
+                ),
+                cursorColor: Color(0xffF5591F),
                 decoration: InputDecoration(
-                  hintText: 'Password',
+                  focusColor: Color(0xffF5591F),
+                  icon: Icon(
+                    Icons.vpn_key,
+                    color: Color(0xffF5591F),
+                  ),
+
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      obscureTextData ? Icons.visibility:
+                      Icons.visibility_off,
+                      color: Color(0xffF5591F),
+                    ),
+                    onPressed:
+                        () {
+                      setState(
+                            () {
+                          obscureTextData = !obscureTextData;
+                        },
+                      );
+                    },
+                  ),
+                  hintText: "Enter Password",
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
                 ),
               ),
               SizedBox(

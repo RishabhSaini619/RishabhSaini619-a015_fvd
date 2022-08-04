@@ -1,6 +1,9 @@
+import 'package:a015_fvd/global/global_firebase.dart';
+import 'package:a015_fvd/global/global_variable.dart';
 import 'package:a015_fvd/screen/screen_auth/screen_user_register/screen_user_register.dart';
 import 'package:a015_fvd/screen/screen_home/screen_home.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserLoginScreenImage extends StatelessWidget {
   @override
@@ -65,7 +68,36 @@ class UserLoginScreenFields extends StatelessWidget {
   }
 }
 
-class UserLoginTextFields extends StatelessWidget {
+class UserLoginTextFields extends StatefulWidget {
+  @override
+  State<UserLoginTextFields> createState() => _UserLoginTextFieldsState();
+}
+
+class _UserLoginTextFieldsState extends State<UserLoginTextFields> {
+  void initState() async {
+    if(userCredential != null){
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomeScreen(),
+            ),
+                (route) => false);
+      });
+    }
+    userPreferences = await SharedPreferences.getInstance() ;
+    try {
+      String emailFromStorage = userPreferences.getString("userID");
+      if (emailFromStorage != null) {
+        emailController.text = emailFromStorage;
+      }
+    } catch (e) {
+      print("Failed to fetch email from local storage");
+    }
+
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
@@ -119,18 +151,66 @@ class UserLoginTextFields extends StatelessWidget {
               SizedBox(
                 height: size.height * 0.04,
               ),
-              TextField(
+              TextFormField(
+                textInputAction: TextInputAction.next,
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                validator: (value) => validateEmail(value),
+                style: const TextStyle(
+                  color: Color(0xffF5591F),
+                ),
+                cursorColor: Color(0xffF5591F),
                 decoration: InputDecoration(
-                  hintText: 'Email',
+                  icon: Icon(
+                    Icons.email,
+                    color: Color(0xffF5591F),
+                  ),
+                  hintText: "Email",
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
                 ),
               ),
               SizedBox(
                 height: size.height * 0.02,
               ),
-              TextField(
-                obscureText: true,
+              TextFormField(
+                textInputAction: TextInputAction.done,
+                onEditingComplete: () {
+                  UserLoginButtons();
+                },
+                controller: passwordController,
+                focusNode: passFocusNode,
+                obscureText: obscureTextData,
+                keyboardType: TextInputType.visiblePassword,
+                validator: (value) => validatePassword(value),
+                cursorColor: Color(0xffF5591F),
+                style: const TextStyle(
+                  color: Color(0xffF5591F),
+                ),
                 decoration: InputDecoration(
-                  hintText: 'Password',
+                  icon: Icon(
+                    Icons.vpn_key,
+                    color: Color(0xffF5591F),
+                  ),
+                  suffixIcon: GestureDetector(
+                    onTap: () {
+                      setState(
+                            () {
+                          obscureTextData = !obscureTextData;
+                        },
+                      );
+                    },
+                    child: Icon(
+                      obscureTextData ? Icons.visibility :
+                      Icons.visibility_off,
+                      color: Color(0xffF5591F),
+                    ),
+                  ),
+                  focusColor: Color(0xffF5591F),
+                  hintText: "Enter Password",
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
                 ),
               ),
               SizedBox(
@@ -151,7 +231,36 @@ class UserLoginTextFields extends StatelessWidget {
   }
 }
 
-class UserLoginButtons extends StatelessWidget {
+class UserLoginButtons extends StatefulWidget {
+  @override
+  State<UserLoginButtons> createState() => _UserLoginButtonsState();
+}
+
+class _UserLoginButtonsState extends State<UserLoginButtons> {
+  void initState() async {
+    if(userCredential != null){
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomeScreen(),
+            ),
+                (route) => false);
+      });
+    }
+    userPreferences = await SharedPreferences.getInstance() ;
+    try {
+      String emailFromStorage = userPreferences.getString("userID");
+      if (emailFromStorage != null) {
+        emailController.text = emailFromStorage;
+      }
+    } catch (e) {
+      print("Failed to fetch email from local storage");
+    }
+
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
