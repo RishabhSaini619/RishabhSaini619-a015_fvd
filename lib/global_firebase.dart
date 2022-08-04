@@ -1,11 +1,14 @@
-// Firebase Auth
+// imports
+import 'package:a015_fvd/screen/screen_inner_product_thumbnail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+    show ChangeNotifier, TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/material.dart';
 
-//
+//Firebase Auth
 FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 UserCredential userCredential;
 String currentUser;
@@ -68,6 +71,18 @@ List<Map> otherCategories = [
   },
 ];
 
+//FireStoreService
+class FireStoreService extends ChangeNotifier {
+  FireStoreService();
+
+  static Future<dynamic> loadImage(BuildContext context, String ID) async {
+    ProductThumbnail.finalURL =
+    await FirebaseStorage.instance.ref().child("$ID.jpg").getDownloadURL();
+    return ProductThumbnail.finalURL;
+  }
+}
+
+
 //firebase options
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
@@ -90,3 +105,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'a015-fvd.appspot.com',
   );
 }
+

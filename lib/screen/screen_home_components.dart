@@ -1,4 +1,6 @@
 import 'package:a015_fvd/global_firebase.dart';
+import 'package:a015_fvd/screen/screen_inner_product_thumbnail.dart';
+import 'package:a015_fvd/screen/screen_inner_viewall.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,7 +33,7 @@ class FruitsContainer extends StatelessWidget {
                 return Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SeeAllScreen(
+                    builder: (context) => ViewAllScreen(
                         categoryTitle: "Fruits",
                         category: fruits,
                         idList: fruitsID),
@@ -49,7 +51,7 @@ class FruitsContainer extends StatelessWidget {
                     themeData.colorScheme.primary.withOpacity(0.1)),
               ),
               child: Text(
-                "See all".toUpperCase(),
+                "View all".toUpperCase(),
                 style: TextStyle(color: themeData.colorScheme.primary),
               ),
             ),
@@ -64,7 +66,7 @@ class FruitsContainer extends StatelessWidget {
           itemCount: fruits.length > 3 ? 3 : fruits.length,
           itemBuilder: (context, index) {
             String productName = fruits[index]["product_name"];
-            return DisplayProductThumbnail(
+            return ProductThumbnail(
               name: productName,
               ID: fruitsID[index],
               data: fruits[index],
@@ -105,7 +107,7 @@ class VegetablesContainer extends StatelessWidget {
                   return Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SeeAllScreen(
+                      builder: (context) => ViewAllScreen(
                           categoryTitle: "Vegetable",
                           category: vegetables,
                           idList: vegetablesID),
@@ -123,7 +125,7 @@ class VegetablesContainer extends StatelessWidget {
                       themeData.colorScheme.primary.withOpacity(0.1)),
                 ),
                 child: Text(
-                  "See all".toUpperCase(),
+                  "View all".toUpperCase(),
                   style: TextStyle(color: themeData.colorScheme.primary),
                 ),
               ),
@@ -138,7 +140,7 @@ class VegetablesContainer extends StatelessWidget {
             itemCount: vegetables.length > 3 ? 3 : vegetables.length,
             itemBuilder: (context, index) {
               String productName = vegetables[index]["product_name"];
-              return DisplayProductThumbnail(
+              return ProductThumbnail(
                   name: productName,
                   ID: vegetablesID[index],
                   data: vegetables[index]);
@@ -178,7 +180,7 @@ class DailyContainer extends StatelessWidget {
                   return Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SeeAllScreen(
+                      builder: (context) => ViewAllScreen(
                           categoryTitle: "Daily",
                           category: daily,
                           idList: dailyID),
@@ -196,7 +198,7 @@ class DailyContainer extends StatelessWidget {
                       themeData.colorScheme.primary.withOpacity(0.1)),
                 ),
                 child: Text(
-                  "See all".toUpperCase(),
+                  "View all".toUpperCase(),
                   style: TextStyle(color: themeData.colorScheme.primary),
                 ),
               ),
@@ -211,7 +213,7 @@ class DailyContainer extends StatelessWidget {
             itemCount: daily.length > 3 ? 3 : daily.length,
             itemBuilder: (context, index) {
               String productName = daily[index]["product_name"];
-              return DisplayProductThumbnail(
+              return ProductThumbnail(
                   name: productName,
                   ID: dailyID[index],
                   data: daily[index]);
@@ -250,7 +252,7 @@ class GrainsContainer extends StatelessWidget {
                   return Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SeeAllScreen(
+                      builder: (context) => ViewAllScreen(
                           categoryTitle: "Grains",
                           category: grains,
                           idList: grainsID),
@@ -268,7 +270,7 @@ class GrainsContainer extends StatelessWidget {
                       themeData.colorScheme.primary.withOpacity(0.1)),
                 ),
                 child: Text(
-                  "See all".toUpperCase(),
+                  "View all".toUpperCase(),
                   style: TextStyle(color: themeData.colorScheme.primary),
                 ),
               ),
@@ -283,7 +285,7 @@ class GrainsContainer extends StatelessWidget {
             itemCount: grains.length > 3 ? 3 : grains.length,
             itemBuilder: (context, index) {
               String productName = grains[index]["product_name"];
-              return DisplayProductThumbnail(
+              return ProductThumbnail(
                 name: productName,
                 ID: grainsID[index],
                 data: grains[index],
@@ -320,7 +322,7 @@ class OtherCategories extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SeeAllScreen(
+                      builder: (context) => ViewAllScreen(
                         categoryTitle: otherCategories[index]["name"],
                         category: otherCategories[index]["category"],
                         idList: otherCategories[index]["idList"],
