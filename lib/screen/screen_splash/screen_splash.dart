@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:a015_fvd/screen/fetch.dart';
-import 'package:a015_fvd/screen/screen_nav.dart';
+import 'package:a015_fvd/widget/widget_fetch.dart';
+import 'package:a015_fvd/screen/screen_navigatin_bar/screen_nav.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {

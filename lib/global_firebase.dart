@@ -1,5 +1,5 @@
 // imports
-import 'package:a015_fvd/screen/screen_inner_product_thumbnail.dart';
+import 'package:a015_fvd/widget/screen_inner_product_thumbnail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
@@ -81,6 +81,36 @@ class FireStoreService extends ChangeNotifier {
     return ProductThumbnail.finalURL;
   }
 }
+Future<Map> getItemDetails() async {
+  DocumentSnapshot doc = await productsCollection.doc().get();
+  return doc.data();
+}
+
+Future<Widget> getImage(BuildContext context, String imageName) async {
+  Image image;
+  await FireStoreService.loadImage(context, imageName).then((value) {
+
+    image = Image.network(
+      value.toString(),
+      fit: BoxFit.cover,
+    );
+  });
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(5),
+    child: image,
+  );
+}
+
+// class FireStoreService extends ChangeNotifier {
+//   FireStoreService();
+//
+//   static Future<dynamic> loadImage(BuildContext context, String ID) async {
+//     return await FirebaseStorage.instance
+//         .ref()
+//         .child("$ID.jpg")
+//         .getDownloadURL();
+//   }
+// }
 
 
 //firebase options

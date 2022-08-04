@@ -1,10 +1,11 @@
 import 'package:a015_fvd/global_theme.dart';
 import 'package:a015_fvd/global_variable.dart';
-import 'package:a015_fvd/screen/screen_cart.dart';
-import 'package:a015_fvd/screen/screen_categories.dart';
+import 'package:a015_fvd/screen/screen_cart/screen_cart.dart';
+import 'package:a015_fvd/screen/screen_categories/screen_categories.dart';
 import 'package:a015_fvd/screen/screen_home/screen_home.dart';
-import 'package:a015_fvd/screen/screen_search.dart';
-import 'package:a015_fvd/screen/screen_user_profile.dart';
+import 'package:a015_fvd/screen/screen_search/screen_search.dart';
+import 'package:a015_fvd/screen/screen_user/screen_user_profile.dart';
+import 'package:a015_fvd/widget/widget_text_widget.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';

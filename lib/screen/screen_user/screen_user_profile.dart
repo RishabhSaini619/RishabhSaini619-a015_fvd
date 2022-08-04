@@ -1,4 +1,4 @@
-import 'package:a015_fvd/global_variable.dart';
+import 'package:a015_fvd/widget/widget_text_widget.dart';
 import 'package:flutter/material.dart';
 
 class UserProfileScreen extends StatefulWidget {

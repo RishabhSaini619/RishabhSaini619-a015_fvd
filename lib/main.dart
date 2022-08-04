@@ -1,7 +1,7 @@
 import 'package:a015_fvd/global_firebase.dart';
-import 'package:a015_fvd/screen/fetch.dart';
+import 'package:a015_fvd/widget/widget_fetch.dart';
 import 'package:a015_fvd/screen/screen_home/screen_home.dart';
-import 'package:a015_fvd/screen/screen_nav.dart';
+import 'package:a015_fvd/screen/screen_navigatin_bar/screen_nav.dart';
 import 'package:a015_fvd/screen/screen_splash/screen_splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

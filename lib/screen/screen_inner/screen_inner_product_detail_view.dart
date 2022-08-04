@@ -1,4 +1,5 @@
-import 'package:a015_fvd/widget_add_to_cart.dart';
+import 'package:a015_fvd/widget/widget_add_to_cart.dart';
+import 'package:a015_fvd/widget/widget_add_to_wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -92,6 +93,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                     ),
                   ),
                   AddToCart(widget.ID),
+                  AddToWishList(widget.ID),
                 ],
               ),
             ),

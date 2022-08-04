@@ -1,6 +1,6 @@
 import 'package:a015_fvd/global_firebase.dart';
 import 'package:a015_fvd/global_theme.dart';
-import 'package:a015_fvd/screen/screen_nav.dart';
+import 'package:a015_fvd/screen/screen_navigatin_bar/screen_nav.dart';
 import 'package:a015_fvd/screen/screen_splash/screen_splash.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';

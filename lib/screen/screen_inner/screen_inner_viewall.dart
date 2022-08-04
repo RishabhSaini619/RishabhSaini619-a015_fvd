@@ -1,5 +1,6 @@
-import 'package:a015_fvd/screen/screen_inner_product_thumbnail.dart';
-import 'package:a015_fvd/widget_add_to_cart.dart';
+import 'package:a015_fvd/widget/screen_inner_product_thumbnail.dart';
+import 'package:a015_fvd/widget/widget_add_to_cart.dart';
+import 'package:a015_fvd/widget/widget_add_to_wishlist.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -106,6 +107,12 @@ class _ViewAllScreenState extends State<ViewAllScreen> {
                     height: 25,
                     fontSize: 12,
                   ),
+                  AddToWishList(
+                    ID,
+                    width: 80,
+                    height: 25,
+                    fontSize: 12,
+                  )
                 ],
               ),
             ),
