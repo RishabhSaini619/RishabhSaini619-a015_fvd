@@ -1,8 +1,12 @@
+import 'package:url_launcher/url_launcher.dart';
+import 'package:a015_fvd/global/global_firebase.dart';
 import 'package:a015_fvd/global/global_variable.dart';
 import 'package:a015_fvd/screen/screen_auth/screen_user_login/screen_user_login.dart';
 import 'package:a015_fvd/screen/screen_home/screen_home.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UserRegisterScreenImage extends StatelessWidget {
   @override
@@ -266,7 +270,12 @@ class _UserRegisterTextFieldsState extends State<UserRegisterTextFields> {
   }
 }
 
-class UserRegisterButtons extends StatelessWidget {
+class UserRegisterButtons extends StatefulWidget {
+  @override
+  State<UserRegisterButtons> createState() => _UserRegisterButtonsState();
+}
+
+class _UserRegisterButtonsState extends State<UserRegisterButtons> {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
@@ -283,12 +292,7 @@ class UserRegisterButtons extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => HomeScreen(),
-                  ),
-                );
+                validateUserEntry();
               },
               child: Container(
                 height: 50,
@@ -317,6 +321,45 @@ class UserRegisterButtons extends StatelessWidget {
                   Icons.arrow_forward_rounded,
                   color: themeData.colorScheme.primary,
                 ),
+              ),
+            ),
+            SizedBox(
+              height: size.height * 0.03,
+            ),
+            Padding(
+              padding: EdgeInsets.all(8.h),
+              child: Row(
+                children: [
+                  Checkbox(
+                      value: termsAndConditions,
+                      activeColor: themeData.colorScheme.primary,
+                      onChanged: (value) {
+                        termsAndConditions = value;
+                        setState(() {});
+                      }),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "I agree the ",
+                          style:
+                          TextStyle(color: Colors.black, fontSize: 12.h),
+                        ),
+                        TextSpan(
+                          text: "Terms and Conditions",
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () async {
+                              String url = "https://example.com";
+                              await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+                            },
+                          style: TextStyle(
+                              color: themeData.colorScheme.primary,
+                              fontSize: 12.h),
+                        )
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
             SizedBox(

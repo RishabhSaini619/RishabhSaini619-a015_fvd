@@ -277,12 +277,7 @@ class _UserLoginButtonsState extends State<UserLoginButtons> {
           children: [
             InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => HomeScreen(),
-                  ),
-                );
+                validateUser();
               },
               child: Container(
                 height: 50,

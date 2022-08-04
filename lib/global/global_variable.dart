@@ -1,7 +1,5 @@
 import 'package:a015_fvd/global/global_firebase.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 //SharedPreferences
 var userPreferences;
@@ -16,14 +14,25 @@ AnimationController animationControllerUserUpdate;
 AnimationController animationControllerUserRegister;
 AnimationController animationControllerUserLogin;
 
-//
+//bool
 bool hidePassword = true;
 bool isLoading = false;
+bool isErrorThere = true;
 bool incorrectCredentials = false;
-String message;
+bool termsAndConditions = false;
+
+//final & var
+int errorCode;
+var obscureTextData = true;
 final passFocusNode = FocusNode();
 final formKey = GlobalKey<FormState>();
-var obscureTextData = true;
+//string
+String message;
+String userName = emailController.text;
+String userPhoneNumber = passwordController.text;
+String userEmail = emailController.text;
+String userPassword = passwordController.text;
+//TextEditingController
 TextEditingController nameController = TextEditingController();
 TextEditingController phoneNumberController = TextEditingController();
 TextEditingController emailController = TextEditingController();
@@ -31,7 +40,7 @@ TextEditingController passwordController = TextEditingController();
 
 //Val
 
-//Name Regex
+///Name Regex
 String validateName(String value) {
   Pattern pattern = r"[a-zA-Z]";
   RegExp regex = new RegExp(pattern);
@@ -40,7 +49,7 @@ String validateName(String value) {
   else
     return null;
 }
-//PhoneRegex
+///PhoneRegex
 String validatePhoneNumber(String value) {
   Pattern pattern =
       r"((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}";
@@ -50,7 +59,7 @@ String validatePhoneNumber(String value) {
   else
     return null;
 }
-//Email Regex
+///Email Regex
 String validateEmail(String value) {
   String pattern = r"([a-zA-Z0-9]+)([\.{1}])?([a-zA-Z0-9]+)\@([\.])";
   RegExp regex = RegExp(pattern);
@@ -59,7 +68,7 @@ String validateEmail(String value) {
   else
     return null;
 }
-//Password Regex
+///Password Regex
 String validatePassword(String value) {
   if (value.isEmpty || value.length < 8) {
     return 'Enter Valid Password only\n (Must contains 8 Character)';
@@ -86,6 +95,4 @@ int findIDUsingIndexWhere(String name) {
   return index;
 }
 
-Future<String> loadImage(BuildContext context, String ID) async {
-  return await FirebaseStorage.instance.ref().child("$ID.jpg").getDownloadURL();
-}
+
