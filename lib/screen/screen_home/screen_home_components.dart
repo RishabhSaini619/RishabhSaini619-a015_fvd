@@ -1,5 +1,5 @@
-import 'package:a015_fvd/global_firebase.dart';
-import 'package:a015_fvd/widget/screen_inner_product_thumbnail.dart';
+import 'package:a015_fvd/global/global_firebase.dart';
+import 'package:a015_fvd/widget/widget_inner_product_thumbnail.dart';
 import 'package:a015_fvd/screen/screen_inner/screen_inner_viewall.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

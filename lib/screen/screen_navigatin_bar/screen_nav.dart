@@ -1,5 +1,5 @@
-import 'package:a015_fvd/global_theme.dart';
-import 'package:a015_fvd/global_variable.dart';
+import 'package:a015_fvd/global/global_theme.dart';
+import 'package:a015_fvd/global/global_variable.dart';
 import 'package:a015_fvd/screen/screen_cart/screen_cart.dart';
 import 'package:a015_fvd/screen/screen_categories/screen_categories.dart';
 import 'package:a015_fvd/screen/screen_home/screen_home.dart';
@@ -10,57 +10,72 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
-class NavBarScreen extends StatefulWidget {
+class NavigationBarScreen extends StatefulWidget {
   @override
-  State<NavBarScreen> createState() => _NavBarScreenState();
+  State<NavigationBarScreen> createState() => _NavigationBarState();
 }
 
-class _NavBarScreenState extends State<NavBarScreen> {
-  int _selectedIndex = 0;
-  final List<Map<String, dynamic>> _NavScreen = [
+class _NavigationBarState extends State<NavigationBarScreen>
+    with SingleTickerProviderStateMixin {
+  int selectedScreenIndex = 0;
+  final List<Map<String, dynamic>> NavigationScreen = [
     {'screen': SearchScreen(), 'title': 'Search'},
     {'screen': CategoriesScreen(), 'title': 'Categories'},
     {'screen': HomeScreen(), 'title': 'Home'},
     {'screen': CartScreen(), 'title': 'Cart'},
     {'screen': UserProfileScreen(), 'title': 'Profile'},
   ];
-  void _selectedScreen(int index) {
+  void selectedScreen(int index) {
     setState(() {
-      _selectedIndex = index;
+      selectedScreenIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    animationControllerNavigationBar = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    animationControllerNavigationBar.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _NavScreen[_selectedIndex]['screen'],
+      body: NavigationScreen[selectedScreenIndex]['screen'],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.transparent,
         type: BottomNavigationBarType.shifting,
         showSelectedLabels: true,
         showUnselectedLabels: false,
-        currentIndex: _selectedIndex,
+        currentIndex: selectedScreenIndex,
         unselectedItemColor: darkMode ? Colors.blueGrey : Colors.grey,
         selectedItemColor: darkMode ? Colors.white : Colors.lightBlue,
-        onTap: _selectedScreen,
+        onTap: selectedScreen,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              _selectedIndex == 0 ? IconlyBold.search : IconlyLight.search,
+              selectedScreenIndex == 0 ? IconlyBold.search : IconlyLight.search,
               size: 20,
             ),
             label: "Search",
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              _selectedIndex == 1 ? IconlyBold.category : IconlyLight.category,
+              selectedScreenIndex == 1
+                  ? IconlyBold.category
+                  : IconlyLight.category,
               size: 20,
             ),
             label: "Categories",
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              _selectedIndex == 2 ? IconlyBold.home : IconlyLight.home,
+              selectedScreenIndex == 2 ? IconlyBold.home : IconlyLight.home,
               size: 20,
             ),
             label: "Home",
@@ -86,9 +101,9 @@ class _NavBarScreenState extends State<NavBarScreen> {
                       ),
                     ),
                     child: Icon(
-                      _selectedIndex == 3 ?
-                      IconlyBold.buy :
-                      IconlyLight.buy,
+                      selectedScreenIndex == 3
+                          ? IconlyBold.buy
+                          : IconlyLight.buy,
                       size: 20,
                     ),
                   );
@@ -97,7 +112,9 @@ class _NavBarScreenState extends State<NavBarScreen> {
               label: "Cart"),
           BottomNavigationBarItem(
             icon: Icon(
-              _selectedIndex == 4 ? IconlyBold.profile : IconlyLight.profile,
+              selectedScreenIndex == 4
+                  ? IconlyBold.profile
+                  : IconlyLight.profile,
               size: 20,
             ),
             label: "User",
@@ -107,3 +124,4 @@ class _NavBarScreenState extends State<NavBarScreen> {
     );
   }
 }
+

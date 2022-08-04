@@ -1,5 +1,5 @@
-import 'package:a015_fvd/global_firebase.dart';
-import 'package:a015_fvd/global_variable.dart';
+import 'package:a015_fvd/global/global_firebase.dart';
+import 'package:a015_fvd/global/global_variable.dart';
 import 'package:a015_fvd/screen/screen_inner/screen_inner_product_detail_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,17 +13,16 @@ class _SearchScreenState extends State<SearchScreen>
     with SingleTickerProviderStateMixin {
   TextEditingController _searchTextController = TextEditingController();
   List searchResults = [];
-  AnimationController _animationControllerSearch;
 
   @override
   void initState() {
     super.initState();
-    _animationControllerSearch = AnimationController(vsync: this);
+    animationControllerSearch = AnimationController(vsync: this);
   }
 
   @override
   void dispose() {
-    _animationControllerSearch.dispose();
+    animationControllerSearch.dispose();
     super.dispose();
   }
 

@@ -1,5 +1,5 @@
-import 'package:a015_fvd/global_firebase.dart';
-import 'package:a015_fvd/global_variable.dart';
+import 'package:a015_fvd/global/global_firebase.dart';
+import 'package:a015_fvd/global/global_variable.dart';
 import 'package:a015_fvd/screen/screen_inner/screen_inner_product_detail_view.dart';
 import 'package:a015_fvd/screen/screen_inner/widget_product_item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -14,19 +14,18 @@ class WishListScreen extends StatefulWidget {
 
 class _WishListScreenState extends State<WishListScreen>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationControllerWishList;
   bool buyNow = false;
 
   @override
   void initState() {
     setState(() {});
     super.initState();
-    _animationControllerWishList = AnimationController(vsync: this);
+    animationControllerWishList = AnimationController(vsync: this);
   }
 
   @override
   void dispose() {
-    _animationControllerWishList.dispose();
+    animationControllerWishList.dispose();
     super.dispose();
   }
 

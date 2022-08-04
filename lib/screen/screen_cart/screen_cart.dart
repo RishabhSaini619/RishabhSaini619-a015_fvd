@@ -1,5 +1,5 @@
-import 'package:a015_fvd/global_firebase.dart';
-import 'package:a015_fvd/global_variable.dart';
+import 'package:a015_fvd/global/global_firebase.dart';
+import 'package:a015_fvd/global/global_variable.dart';
 import 'package:a015_fvd/screen/screen_inner/screen_inner_product_detail_view.dart';
 import 'package:a015_fvd/screen/screen_inner/widget_product_item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,19 +15,19 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationControllerCart;
+
   bool buyNow = false;
 
   @override
   void initState() {
     setState(() {});
     super.initState();
-    _animationControllerCart = AnimationController(vsync: this);
+    animationControllerCart = AnimationController(vsync: this);
   }
 
   @override
   void dispose() {
-    _animationControllerCart.dispose();
+    animationControllerCart.dispose();
     super.dispose();
   }
 

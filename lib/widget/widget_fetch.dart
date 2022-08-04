@@ -1,5 +1,5 @@
-import 'package:a015_fvd/global_firebase.dart';
-import 'package:a015_fvd/global_theme.dart';
+import 'package:a015_fvd/global/global_firebase.dart';
+import 'package:a015_fvd/global/global_theme.dart';
 import 'package:a015_fvd/screen/screen_navigatin_bar/screen_nav.dart';
 import 'package:a015_fvd/screen/screen_splash/screen_splash.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -54,7 +54,7 @@ class _FetchState extends State<Fetch> {
               ),
               themeMode: theme,
               debugShowCheckedModeBanner: false,
-              home: isFirebaseLoading ? SplashScreen() : NavBarScreen(),
+              home: isFirebaseLoading ? SplashScreen() : NavigationBarScreen(),
             );
           },
         );

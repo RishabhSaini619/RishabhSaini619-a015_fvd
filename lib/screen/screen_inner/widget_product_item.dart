@@ -1,4 +1,4 @@
-import 'package:a015_fvd/global_firebase.dart';
+import 'package:a015_fvd/global/global_firebase.dart';
 import 'package:a015_fvd/widget/widget_add_to_cart.dart';
 import 'package:a015_fvd/widget/widget_add_to_wishlist.dart';
 import 'package:flutter/material.dart';

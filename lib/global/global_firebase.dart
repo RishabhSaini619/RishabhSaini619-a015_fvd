@@ -1,5 +1,6 @@
 // imports
-import 'package:a015_fvd/widget/screen_inner_product_thumbnail.dart';
+import 'package:a015_fvd/global/global_variable.dart';
+import 'package:a015_fvd/widget/widget_inner_product_thumbnail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
@@ -7,6 +8,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart'
     show ChangeNotifier, TargetPlatform, defaultTargetPlatform;
 import 'package:flutter/material.dart';
+import '../../main.dart';
 
 //Firebase Auth
 FirebaseAuth firebaseAuth = FirebaseAuth.instance;
@@ -112,6 +114,39 @@ class FireStoreService extends ChangeNotifier {
     return ProductThumbnail.finalURL;
   }
 }
+
+Future<void> getUser() async {
+  if (currentUser != null) {
+    DocumentSnapshot documentSnapshot =
+    await userCollection.doc(currentUser).get();
+    Map<String, dynamic> doc = documentSnapshot.data();
+    nameController.text = doc["user_name"];
+    emailController.text = doc["user_email"];
+    phoneNumberController.text = (doc["user_phone_number"]).toString();
+    print(emailController.text);
+  }
+}
+
+// Future<void> updateUserDetails() async{
+//   setState(() {
+//     isLoading = true;
+//   });
+//   Map<String, dynamic> data = {
+//     "user_name":nameController.text,
+//     "user_email":emailController.text,
+//     "user_phone_number":phoneNumberController.text
+//   };
+//   if (currentUser != null) {
+//     DocumentSnapshot documentSnapshot =
+//     await userCollection.doc(currentUser).get();
+//     Map<String, dynamic> doc = documentSnapshot.data();
+//     userCollection.doc(currentUser).update(data);
+//   }
+//   setState(() {
+//     isLoading = false;
+//   });
+// }
+
 Future<Map> getItemDetails() async {
   DocumentSnapshot doc = await productsCollection.doc().get();
   return doc.data();
@@ -131,6 +166,9 @@ Future<Widget> getImage(BuildContext context, String imageName) async {
     child: image,
   );
 }
+
+
+
 
 // class FireStoreService extends ChangeNotifier {
 //   FireStoreService();

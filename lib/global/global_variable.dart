@@ -1,8 +1,22 @@
-import 'package:a015_fvd/global_firebase.dart';
+import 'package:a015_fvd/global/global_firebase.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+var prefs = SharedPreferences.getInstance();
 
+//AnimationController
+AnimationController animationControllerNavigationBar;
+AnimationController animationControllerCart;
+AnimationController animationControllerUserProfile;
+AnimationController animationControllerSearch;
+AnimationController animationControllerWishList;
+
+//
+  bool isLoading = false;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
 
 
 // CartStatus

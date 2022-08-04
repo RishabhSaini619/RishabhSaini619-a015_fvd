@@ -1,4 +1,4 @@
-import 'package:a015_fvd/global_firebase.dart';
+import 'package:a015_fvd/global/global_firebase.dart';
 import 'package:a015_fvd/screen/screen_home/screen_home_components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

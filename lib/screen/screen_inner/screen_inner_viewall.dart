@@ -1,4 +1,4 @@
-import 'package:a015_fvd/widget/screen_inner_product_thumbnail.dart';
+import 'package:a015_fvd/widget/widget_inner_product_thumbnail.dart';
 import 'package:a015_fvd/widget/widget_add_to_cart.dart';
 import 'package:a015_fvd/widget/widget_add_to_wishlist.dart';
 import 'package:firebase_storage/firebase_storage.dart';

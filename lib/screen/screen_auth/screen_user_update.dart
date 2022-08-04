@@ -1,13 +1,13 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
-class UserLoginScreen extends StatefulWidget {
+class UserUpdateScreen extends StatefulWidget {
 
   @override
-  State<UserLoginScreen> createState() => _UserLoginScreenState();
+  State<UserUpdateScreen> createState() => _UserUpdateScreenState();
 }
 
-class _UserLoginScreenState extends State<UserLoginScreen> with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+class _UserUpdateScreenState extends State<UserUpdateScreen> with SingleTickerProviderStateMixin {
+   AnimationController _controller;
 
   @override
   void initState() {
@@ -26,4 +26,3 @@ class _UserLoginScreenState extends State<UserLoginScreen> with SingleTickerProv
     return Container();
   }
 }
-
