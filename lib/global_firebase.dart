@@ -49,24 +49,55 @@ List<String> spicesID = [];
 
 List<String> allProductsID = [];
 
-// otherCategories
-List<Map> otherCategories = [
+// allCategories
+List<Map> allCategories = [
+  //Fruits
   {
     "name": "Fruits",
+    "image": "assets/Fruits.svg",
+    "category": fruits,
+    "idList": fruitsID
+  },
+  //Vegetables
+  {
+    "name": "Vegetables",
+    "image": "assets/Fruits.svg",
+    "category": vegetables,
+    "idList": vegetablesID
+  },
+  //Daily
+  {
+    "name": "Daily",
+    "image": "assets/Fruits.svg",
+    "category": daily,
+    "idList": dailyID
+  },
+  //Grains
+  {
+    "name": "Grains",
+    "image": "assets/Fruits.svg",
+    "category": grains,
+    "idList": grainsID
+  },
+  //Herbs
+  {
+    "name": "Herbs",
     "image": "assets/Fruits.svg",
     "category": herbs,
     "idList": herbsID
   },
+  //Nuts
   {
-    "name": "Veggies",
+    "name": "Nuts",
     "image": "assets/Vegetables.svg",
     "category": nuts,
     "idList": nutsID
   },
+  //Spices
   {
-    "name": "Dairy",
+    "name": "Spices",
     "image": "assets/Dairy.svg",
-    "category": spices,
+    "category": spicesID,
     "idList": spicesID
   },
 ];

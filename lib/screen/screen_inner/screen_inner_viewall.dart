@@ -84,7 +84,7 @@ class _ViewAllScreenState extends State<ViewAllScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ProductThumbnail(
-              name: widget.category[i]["vegetable_name"],
+              name: widget.category[i]["product_name"],
               ID: ID,
               data: widget.category[i],
             ),
@@ -95,7 +95,7 @@ class _ViewAllScreenState extends State<ViewAllScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Rs. ${widget.category[i]["vegetable_price"]}",
+                    "Rs. ${widget.category[i]["product_price"]}",
                     style: TextStyle(
                       fontSize: 12.h,
                       fontWeight: FontWeight.bold,

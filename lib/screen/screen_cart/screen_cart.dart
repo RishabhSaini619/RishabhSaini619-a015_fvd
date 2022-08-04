@@ -63,7 +63,7 @@ class _CartScreenState extends State<CartScreen>
                                     source: url,
                                     ID: cartItems.elementAt(index).toString(),
                                     data: data,
-                                    name: data["vegetable_name"],
+                                    name: data["product_name"],
                                   ),
                                 ),
                               );

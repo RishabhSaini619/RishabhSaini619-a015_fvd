@@ -54,7 +54,7 @@ class _ProductItemsState extends State<ProductItems> {
                             Container(
                               width: 120.h,
                               child: Text(
-                                "${snapshot.data["vegetable_name"]}",
+                                "${snapshot.data["product_name"]}",
                                 style: TextStyle(
                                     overflow: TextOverflow.ellipsis,
                                     fontSize: 15.sp,
@@ -63,7 +63,7 @@ class _ProductItemsState extends State<ProductItems> {
                               ),
                             ),
                             Text(
-                              "Rs. ${snapshot.data["vegetable_price"]}.00",
+                              "Rs. ${snapshot.data["product_price"]}.00",
                               style: TextStyle(
                                 fontSize: 12.h,
                                 fontWeight: FontWeight.bold,

@@ -86,7 +86,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Text(
-                    "Rs. ${widget.data["vegetable_price"]}",
+                    "Rs. ${widget.data["product_price"]}",
                     style: TextStyle(
                       fontSize: 20.h,
                       fontWeight: FontWeight.bold,
