@@ -1,7 +1,7 @@
 import 'package:a015_fvd/global/global_theme.dart';
 import 'package:a015_fvd/global/global_variable.dart';
-import 'package:a015_fvd/screen/screen_auth/screen_user_update.dart';
-import 'package:a015_fvd/screen/screen_auth/widget_user_exit.dart';
+import 'package:a015_fvd/screen/screen_auth/screen_user_update/screen_user_update.dart';
+import 'package:a015_fvd/screen/screen_auth/widget_user_exit/widget_user_exit.dart';
 import 'package:a015_fvd/widget/widget_text_widget.dart';
 import 'package:flutter/material.dart';
 

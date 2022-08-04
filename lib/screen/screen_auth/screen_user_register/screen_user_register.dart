@@ -1,6 +1,6 @@
 import 'package:a015_fvd/global/global_variable.dart';
+import 'package:a015_fvd/screen/screen_auth/screen_user_register/screen_user_register_components.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class UserRegisterScreen extends StatefulWidget {
   @override
@@ -23,6 +23,18 @@ class _UserRegisterScreenState extends State<UserRegisterScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: ListView(
+        children: [
+          Stack(
+            children: [
+              UserRegisterScreenImage(),
+              UserRegisterScreenMessage(),
+              UserRegisterScreenFields(),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

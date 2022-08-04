@@ -1,7 +1,6 @@
 import 'package:a015_fvd/global/global_variable.dart';
-
+import 'package:a015_fvd/screen/screen_auth/screen_user_login/screen_user_login_components.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class UserLoginScreen extends StatefulWidget {
   @override
@@ -24,6 +23,18 @@ class _UserLoginScreenState extends State<UserLoginScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: ListView(
+        children: [
+          Stack(
+            children: [
+              UserLoginScreenImage(),
+              UserLoginScreenMessage(),
+              UserLoginScreenFields(),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
