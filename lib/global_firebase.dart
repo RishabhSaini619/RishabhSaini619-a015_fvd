@@ -10,6 +10,7 @@ FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 UserCredential userCredential;
 String currentUser;
 String userName = "Name";
+DocumentSnapshot<Map> documentSnapshot;
 
 // Firebase Firestore
 CollectionReference userCollection = FirebaseFirestore.instance.collection("user_profile");
@@ -23,23 +24,49 @@ List<Map> allDocumentsData = [];
 // Categories
 List<Map> fruits = [];
 List<Map> vegetables = [];
+List<Map> daily = [];
+List<Map> grains = [];
+
 List<Map> herbs = [];
 List<Map> nuts = [];
 List<Map> spices = [];
-List<Map> grains = [];
-List<Map> daily = [];
+
 List<Map> allProducts = [];
 
 
 // Categories ID List
 List<String> fruitsID = [];
 List<String> vegetablesID = [];
+List<String> dailyID = [];
+List<String> grainsID = [];
+
 List<String> herbsID = [];
 List<String> nutsID = [];
 List<String> spicesID = [];
-List<String> grainsID = [];
-List<String> dailyID = [];
+
 List<String> allProductsID = [];
+
+// otherCategories
+List<Map> otherCategories = [
+  {
+    "name": "Fruits",
+    "image": "assets/Fruits.svg",
+    "category": herbs,
+    "idList": herbsID
+  },
+  {
+    "name": "Veggies",
+    "image": "assets/Vegetables.svg",
+    "category": nuts,
+    "idList": nutsID
+  },
+  {
+    "name": "Dairy",
+    "image": "assets/Dairy.svg",
+    "category": spices,
+    "idList": spicesID
+  },
+];
 
 //firebase options
 class DefaultFirebaseOptions {
