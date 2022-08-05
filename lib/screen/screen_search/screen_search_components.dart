@@ -1,8 +1,10 @@
 import 'package:a015_fvd/global/global_firebase.dart';
 import 'package:a015_fvd/global/global_variable.dart';
 import 'package:a015_fvd/screen/screen_inner/inner_screen_product_detail_view/inner_screen_product_detail_view.dart';
+import 'package:a015_fvd/screen/screen_inner/inner_screen_product_detail_view/inner_screen_product_detail_view_components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class SearchScreenAppBar extends StatelessWidget {
 
   @override
@@ -98,7 +100,7 @@ class _SearchScreenResultState extends State<SearchScreenResult> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ProductDetailView(
+                builder: (context) => ProductDetailViewBody(
                   ID: allDocumentIDs[imageIndex],
                   name: searchResults[index]["product_name"],
                   data: searchResults[index],

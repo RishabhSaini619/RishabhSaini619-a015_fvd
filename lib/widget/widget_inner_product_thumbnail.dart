@@ -1,5 +1,5 @@
 import 'package:a015_fvd/global/global_firebase.dart';
-import 'package:a015_fvd/screen/screen_inner/inner_screen_product_detail_view/inner_screen_product_detail_view.dart';
+import 'package:a015_fvd/screen/screen_inner/inner_screen_product_detail_view/inner_screen_product_detail_view_components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,8 +12,7 @@ class ProductThumbnail extends StatefulWidget {
   ProductThumbnail({this.name, this.ID, this.data});
 
   @override
-  State<ProductThumbnail> createState() =>
-      _ProductThumbnailState();
+  State<ProductThumbnail> createState() => _ProductThumbnailState();
 }
 
 class _ProductThumbnailState extends State<ProductThumbnail> {
@@ -27,15 +26,16 @@ class _ProductThumbnailState extends State<ProductThumbnail> {
         onTap: () async {
           String source = await FireStoreService.loadImage(context, widget.ID);
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => new ProductDetailView(
-                  name: widget.name,
-                  source: source,
-                  data: widget.data,
-                  ID: widget.ID,
-                ),
-              ));
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProductDetailViewBody(
+                name: widget.name,
+                source: source,
+                data: widget.data,
+                ID: widget.ID,
+              ),
+            ),
+          );
         },
         child: Container(
           width: 140.h,
@@ -116,7 +116,7 @@ class _ProductThumbnailState extends State<ProductThumbnail> {
       borderRadius: BorderRadius.circular(5),
       child: FadeInImage(
           image: image,
-          placeholder: AssetImage("assets/no_image.jpg"),
+          placeholder: AssetImage("assets/images/no_image.jpg"),
           fit: BoxFit.cover),
     );
   }

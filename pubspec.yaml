@@ -48,6 +48,7 @@ flutter:
     - assets/background/
     - assets/categories/
     - assets/darkMode/
+    - assets/images/
     - assets/offers/
 
   # fonts:

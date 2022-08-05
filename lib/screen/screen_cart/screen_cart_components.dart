@@ -1,6 +1,6 @@
 import 'package:a015_fvd/global/global_firebase.dart';
 import 'package:a015_fvd/global/global_variable.dart';
-import 'package:a015_fvd/screen/screen_inner/inner_screen_product_detail_view/inner_screen_product_detail_view.dart';
+import 'package:a015_fvd/screen/screen_inner/inner_screen_product_detail_view/inner_screen_product_detail_view_components.dart';
 import 'package:a015_fvd/screen/screen_inner/widget_product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +34,7 @@ class CartScreenProduct extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProductDetailView(
+                        builder: (context) => ProductDetailViewBody(
                           source: data["product_url"],
                           ID: cartItems.elementAt(index).toString(),
                           data: data,

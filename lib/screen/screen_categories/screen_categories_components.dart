@@ -1,7 +1,8 @@
 import 'package:a015_fvd/global/global_firebase.dart';
 import 'package:a015_fvd/global/global_variable.dart';
 import 'package:a015_fvd/screen/screen_inner/inner_screen_product_detail_view/inner_screen_product_detail_view.dart';
-import 'package:a015_fvd/screen/screen_inner/inner_screen_viewall.dart';
+import 'package:a015_fvd/screen/screen_inner/inner_screen_viewall/inner_screen_viewall.dart';
+import 'package:a015_fvd/screen/screen_inner/inner_screen_viewall/inner_screen_viewall_components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -36,7 +37,7 @@ class _CategoriesScreenListState extends State<CategoriesScreenList> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ViewAllScreen(
+                  builder: (context) => ViewAlBody(
                     categoryTitle: allCategories[index]["name"],
                     category: allCategories[index]["category"],
                     idList: allCategories[index]["idList"],

@@ -1,7 +1,8 @@
 import 'package:a015_fvd/global/global_firebase.dart';
 import 'package:a015_fvd/global/global_variable.dart';
+import 'package:a015_fvd/screen/screen_inner/inner_screen_viewall/inner_screen_viewall_components.dart';
 import 'package:a015_fvd/widget/widget_inner_product_thumbnail.dart';
-import 'package:a015_fvd/screen/screen_inner/inner_screen_viewall.dart';
+import 'package:a015_fvd/screen/screen_inner/inner_screen_viewall/inner_screen_viewall.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,7 +60,7 @@ class FruitsContainer extends StatelessWidget {
                   return Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ViewAllScreen(
+                      builder: (context) => ViewAlBody(
                           categoryTitle: "Fruits",
                           category: fruits,
                           idList: fruitsID),
@@ -131,7 +132,7 @@ class VegetablesContainer extends StatelessWidget {
                   return Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ViewAllScreen(
+                      builder: (context) => ViewAlBody(
                           categoryTitle: "Vegetable",
                           category: vegetables,
                           idList: vegetablesID),
@@ -202,7 +203,7 @@ class DailyContainer extends StatelessWidget {
                   return Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ViewAllScreen(
+                      builder: (context) => ViewAlBody(
                           categoryTitle: "Daily",
                           category: daily,
                           idList: dailyID),
@@ -271,7 +272,7 @@ class GrainsContainer extends StatelessWidget {
                   return Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ViewAllScreen(
+                      builder: (context) => ViewAlBody(
                           categoryTitle: "Grains",
                           category: grains,
                           idList: grainsID),

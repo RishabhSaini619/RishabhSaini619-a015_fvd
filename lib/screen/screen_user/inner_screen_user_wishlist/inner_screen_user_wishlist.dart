@@ -1,4 +1,4 @@
-import 'package:a015_fvd/screen/screen_user/inner_screen_user_wishlist_components.dart';
+import 'package:a015_fvd/screen/screen_user/inner_screen_user_wishlist/inner_screen_user_wishlist_components.dart';
 import 'package:a015_fvd/global/global_variable.dart';
 import 'package:flutter/material.dart';
 
