@@ -21,34 +21,33 @@ class WishListScreenProduct extends StatelessWidget {
     return wishListItems.length < 1
         ? Text("Nothing in WishList")
         : Expanded(
-      child: ListView.separated(
-        separatorBuilder: (context, index) => Divider(),
-        itemCount: wishListItems.length,
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () async {
-              Map data = await getItemDetailsID(
-                  wishListItems.elementAt(index).toString());
+            child: ListView.separated(
+              separatorBuilder: (context, index) => Divider(),
+              itemCount: wishListItems.length,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () async {
+                    Map data = await getItemDetailsID(
+                        wishListItems.elementAt(index).toString());
 
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ProductDetailViewBody(
-                    source: data["product_url"],
-                    ID: wishListItems.elementAt(index).toString(),
-                    data: data,
-                    name: data["product_name"],
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductDetailViewBody(
+                          source: data["product_url"],
+                          ID: wishListItems.elementAt(index).toString(),
+                          data: data,
+                          name: data["product_name"],
+                        ),
+                      ),
+                    );
+                  },
+                  child: ProductItems(
+                    wishListItems.elementAt(index).toString(),
                   ),
-                ),
-              );
-            },
-            child: ProductItems(
-              wishListItems.elementAt(index).toString(),
+                );
+              },
             ),
           );
-        },
-      ),
-    );
   }
 }
-

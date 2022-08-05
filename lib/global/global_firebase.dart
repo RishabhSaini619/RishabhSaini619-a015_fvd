@@ -115,10 +115,11 @@ class FireStoreService extends ChangeNotifier {
 class RegisterModel {
   String userId;
   String userName;
-  String email;
-  int phoneNumber;
+  String userEmail;
+  int userPhoneNumber;
 
-  RegisterModel({this.userId, this.userName, this.email, this.phoneNumber});
+  RegisterModel(
+      {this.userId, this.userName, this.userEmail, this.userPhoneNumber});
 
   Future<void> addUser() async {
     CollectionReference userCollection =
@@ -126,8 +127,8 @@ class RegisterModel {
 
     Map<String, dynamic> userData = {
       "user_name": userName,
-      "user_email": email,
-      "user_phone_number": phoneNumber,
+      "user_email": userEmail,
+      "user_phone_number": userPhoneNumber,
       "user_id": userId,
       "cart": [],
     };
@@ -136,20 +137,15 @@ class RegisterModel {
   }
 }
 
-  Future<int> getItemPrice(Set<dynamic> ID) async {
-    int total = 0;
-    for (int i = 0; i < ID.length; i++) {
-      DocumentSnapshot doc =
-      await productsCollection.doc(ID.elementAt(i)).get();
-      Map map = doc.data();
-      total += map["product_price"];
-    }
-    return total;
+Future<int> getItemPrice(Set<dynamic> ID) async {
+  int total = 0;
+  for (int i = 0; i < ID.length; i++) {
+    DocumentSnapshot doc = await productsCollection.doc(ID.elementAt(i)).get();
+    Map map = doc.data();
+    total += map["product_price"];
   }
-
-
-
-
+  return total;
+}
 
 Future<Map> getItemDetailsID(String ID) async {
   DocumentSnapshot doc = await productsCollection.doc(ID).get();
@@ -227,7 +223,6 @@ class _ValidateUserState extends State<ValidateUser> {
   void initState() {
     GetUser();
     validateUser();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -303,7 +298,6 @@ class _ValidateUserEntryState extends State<ValidateUserEntry> {
   void initState() {
     GetUser();
     validateUserEntry();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -350,7 +344,6 @@ class _RegisterUserState extends State<RegisterUser> {
   void initState() {
     GetUser();
     registerUser();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -378,10 +371,10 @@ class _RegisterUserState extends State<RegisterUser> {
     if (userCredential.user != null) {
       print("This line is executed");
       await RegisterModel(
-        email: email,
-        phoneNumber: int.parse(phoneNumberController.text),
-        userName: nameController.text,
         userId: userCredential.user.uid,
+        userName: nameController.text,
+        userEmail: email,
+        userPhoneNumber: int.parse(phoneNumberController.text),
       )
         ..addUser();
     }
@@ -407,7 +400,6 @@ class _UpdateUserState extends State<UpdateUser> {
   void initState() {
     GetUser();
     updateUser();
-    // TODO: implement initState
     super.initState();
   }
 
