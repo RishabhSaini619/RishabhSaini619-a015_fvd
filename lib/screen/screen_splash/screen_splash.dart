@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:a015_fvd/screen/screen_auth/screen_user_login/screen_user_login.dart';
 import 'package:a015_fvd/widget/widget_fetch.dart';
 import 'package:a015_fvd/screen/screen_navigatin_bar/screen_nav.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => Fetch(),
+        builder: (context) => UserLoginScreen(),
         // LoginScreen(),
       ),
     );

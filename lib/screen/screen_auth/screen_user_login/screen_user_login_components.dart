@@ -2,6 +2,7 @@ import 'package:a015_fvd/global/global_firebase.dart';
 import 'package:a015_fvd/global/global_variable.dart';
 import 'package:a015_fvd/screen/screen_auth/screen_user_register/screen_user_register.dart';
 import 'package:a015_fvd/screen/screen_home/screen_home.dart';
+import 'package:a015_fvd/widget/widget_fetch.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -80,7 +81,7 @@ class _UserLoginTextFieldsState extends State<UserLoginTextFields> {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) => HomeScreen(),
+              builder: (context) => Fetch(),
             ),
                 (route) => false);
       });

@@ -1,5 +1,6 @@
 import 'package:a015_fvd/global/global_firebase.dart';
 import 'package:a015_fvd/global/global_theme.dart';
+import 'package:a015_fvd/screen/screen_loading/screen_loading.dart';
 import 'package:a015_fvd/screen/screen_navigatin_bar/screen_nav.dart';
 import 'package:a015_fvd/screen/screen_splash/screen_splash.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -54,7 +55,7 @@ class _FetchState extends State<Fetch> {
               ),
               themeMode: theme,
               debugShowCheckedModeBanner: false,
-              home: isFirebaseLoading ? SplashScreen() : NavigationBarScreen(),
+              home: isFirebaseLoading ? LoadingScreen() : NavigationBarScreen(),
             );
           },
         );
@@ -107,59 +108,5 @@ class _FetchState extends State<Fetch> {
     });
   }
 
-  Future<List> docIdList(String category) async {
-    QuerySnapshot querySnapshot = await productsCollection
-        .where("products_category", arrayContainsAny: [category]).get();
-    Map map;
-    for (var element in querySnapshot.docs) {
-      allDocumentIDs.add(element.id);
-      DocumentSnapshot<Map> doc =
-          await productsCollection.doc(element.id).get();
-      map = doc.data();
-      allDocumentsData.add(map);
 
-      if (category == "Fruits") {
-        fruits.add(map);
-        fruitsID.add(element.id);
-        allProducts.add(map);
-        allProductsID.add(element.id);
-      } else if (category == "Vegetables") {
-        vegetables.add(map);
-        vegetablesID.add(element.id);
-        allProducts.add(map);
-        allProductsID.add(element.id);
-      } else if (category == "Herbs") {
-        herbs.add(map);
-        herbsID.add(element.id);
-        allProducts.add(map);
-        allProductsID.add(element.id);
-      } else if (category == "Nuts") {
-        nuts.add(map);
-        nutsID.add(element.id);
-        allProducts.add(map);
-        allProductsID.add(element.id);
-
-      } else if (category == "Spices") {
-        spices.add(map);
-        spicesID.add(element.id);
-        allProducts.add(map);
-        allProductsID.add(element.id);
-      } else if (category == "Grains") {
-        grains.add(map);
-        grainsID.add(element.id);
-        allProducts.add(map);
-        allProductsID.add(element.id);
-
-      } else if (category == "Daily") {
-        daily.add(map);
-        dailyID.add(element.id);
-        allProducts.add(map);
-        allProductsID.add(element.id);
-      }
-
-      print("${map["product_name"]}");
-    }
-
-    print("\n $category \n\n $map \n\n\n");
-  }
 }

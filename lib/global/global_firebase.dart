@@ -185,6 +185,62 @@ Future<bool> checkUserId(String id) async {
   return documentSnapshot.exists;
 }
 
+Future<List> docIdList(String category) async {
+  QuerySnapshot querySnapshot = await productsCollection
+      .where("products_category", arrayContainsAny: [category]).get();
+  Map map;
+  for (var element in querySnapshot.docs) {
+    allDocumentIDs.add(element.id);
+    DocumentSnapshot<Map> doc =
+    await productsCollection.doc(element.id).get();
+    map = doc.data();
+    allDocumentsData.add(map);
+
+    if (category == "Fruits") {
+      fruits.add(map);
+      fruitsID.add(element.id);
+      allProducts.add(map);
+      allProductsID.add(element.id);
+    } else if (category == "Vegetables") {
+      vegetables.add(map);
+      vegetablesID.add(element.id);
+      allProducts.add(map);
+      allProductsID.add(element.id);
+    } else if (category == "Herbs") {
+      herbs.add(map);
+      herbsID.add(element.id);
+      allProducts.add(map);
+      allProductsID.add(element.id);
+    } else if (category == "Nuts") {
+      nuts.add(map);
+      nutsID.add(element.id);
+      allProducts.add(map);
+      allProductsID.add(element.id);
+
+    } else if (category == "Spices") {
+      spices.add(map);
+      spicesID.add(element.id);
+      allProducts.add(map);
+      allProductsID.add(element.id);
+    } else if (category == "Grains") {
+      grains.add(map);
+      grainsID.add(element.id);
+      allProducts.add(map);
+      allProductsID.add(element.id);
+
+    } else if (category == "Daily") {
+      daily.add(map);
+      dailyID.add(element.id);
+      allProducts.add(map);
+      allProductsID.add(element.id);
+    }
+
+    print("${map["product_name"]}");
+  }
+
+  print("\n $category \n\n $map \n\n\n");
+}
+
 class GetUser extends StatefulWidget {
   @override
   State<GetUser> createState() => _GetUserState();
@@ -432,5 +488,3 @@ class _UpdateUserState extends State<UpdateUser> {
 Future<String> loadImage(BuildContext context, String ID) async {
   return await FirebaseStorage.instance.ref().child("$ID.jpg").getDownloadURL();
 }
-
-//firebase options
