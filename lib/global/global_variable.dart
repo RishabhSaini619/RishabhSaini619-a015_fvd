@@ -14,7 +14,10 @@ AnimationController animationControllerUserUpdate;
 AnimationController animationControllerUserRegister;
 AnimationController animationControllerUserLogin;
 
+//List
+List searchResults = [];
 //bool
+bool buyNow = false;
 bool hidePassword = true;
 bool isLoading = false;
 bool isErrorThere = true;
@@ -27,12 +30,15 @@ var obscureTextData = true;
 final passFocusNode = FocusNode();
 final formKey = GlobalKey<FormState>();
 //string
+
+
 String message;
 String userName = emailController.text;
 String userPhoneNumber = passwordController.text;
 String userEmail = emailController.text;
 String userPassword = passwordController.text;
 //TextEditingController
+TextEditingController searchController = TextEditingController();
 TextEditingController nameController = TextEditingController();
 TextEditingController phoneNumberController = TextEditingController();
 TextEditingController emailController = TextEditingController();
@@ -93,6 +99,16 @@ int findIDUsingIndexWhere(String name) {
   final index = allDocumentsData.indexWhere((element) =>
       (element["product_name"].toLowerCase()) == name.toLowerCase());
   return index;
+}
+
+//
+class Offers {
+  static final List<String> offerImages = [
+    'assets/offers/Offer1.jpg',
+    'assets/offers/Offer2.jpg',
+    'assets/offers/Offer3.jpg',
+    'assets/offers/Offer4.jpg'
+  ];
 }
 
 

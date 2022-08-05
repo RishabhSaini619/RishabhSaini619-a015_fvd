@@ -4,12 +4,8 @@ import 'package:a015_fvd/screen/screen_home/screen_home.dart';
 import 'package:a015_fvd/widget/widget_inner_product_thumbnail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/foundation.dart'
-    show ChangeNotifier, TargetPlatform, defaultTargetPlatform;
 import 'package:flutter/material.dart';
-import '../../main.dart';
 
 //Firebase Auth
 FirebaseAuth firebaseAuth = FirebaseAuth.instance;
@@ -138,6 +134,26 @@ class RegisterModel {
 
     await userCollection.doc(userId).set(userData);
   }
+}
+
+  Future<int> getItemPrice(Set<dynamic> ID) async {
+    int total = 0;
+    for (int i = 0; i < ID.length; i++) {
+      DocumentSnapshot doc =
+      await productsCollection.doc(ID.elementAt(i)).get();
+      Map map = doc.data();
+      total += map["product_price"];
+    }
+    return total;
+  }
+
+
+
+
+
+Future<Map> getItemDetailsID(String ID) async {
+  DocumentSnapshot doc = await productsCollection.doc(ID).get();
+  return doc.data();
 }
 
 Future<Map> getItemDetails() async {
@@ -353,7 +369,7 @@ class _RegisterUserState extends State<RegisterUser> {
       userCredential = await firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
       userPreferences.setString("userID", userCredential);
-      print("try block executed sucessfully");
+      print("try block executed successfully");
     } catch (exception) {
       if (exception is FirebaseAuthException) {
         print(exception.message);

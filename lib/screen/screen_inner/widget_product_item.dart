@@ -95,6 +95,4 @@ class _ProductItemsState extends State<ProductItems> {
       ),
     );
   }
-
-
 }
