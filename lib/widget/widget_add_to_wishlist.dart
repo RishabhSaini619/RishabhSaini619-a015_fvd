@@ -96,8 +96,9 @@ class _AddToWishListState extends State<AddToWishList> {
                       ? 100.h
                       : widget.width.h,
               decoration: BoxDecoration(
-                color:
-                    addedToWishList ? Colors.grey : themeData.colorScheme.secondary,
+                color: addedToWishList
+                    ? Colors.grey
+                    : themeData.colorScheme.secondary,
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
@@ -159,8 +160,10 @@ class _AddToWishListState extends State<AddToWishList> {
         print(e);
       }
     }
-    setState(() {
-      addToWishListLoading = false;
-    });
+    setState(
+      () {
+        addToWishListLoading = false;
+      },
+    );
   }
 }
