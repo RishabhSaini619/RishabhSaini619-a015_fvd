@@ -6,15 +6,27 @@ import 'package:a015_fvd/screen/screen_navigatin_bar/screen_nav.dart';
 import 'package:a015_fvd/screen/screen_splash/screen_splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async{
-  //await ScreenUtil.ensureScreenSize();
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  try {
+    await Firebase.initializeApp(
+      options: FirebaseOptions(
+        apiKey: 'AIzaSyC_61VH6q-rQB5emiF1Sqot7vNW4MWUEpU',
+        appId: '1:531872287724:web:53e6376aba11e0bbd08ec9',
+        messagingSenderId: '531872287724',
+        projectId: 'a015-fvd',
+        storageBucket: 'a015-fvd.appspot.com',
+      ),
+    );
+  } catch (e) {
+    print("Unable to load web");
+    print(e);
+  }
 
+  await ScreenUtil.ensureScreenSize();
   userPreferences = await SharedPreferences.getInstance();
 
   try {
@@ -26,11 +38,10 @@ void main() async{
     print(e);
   }
 
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

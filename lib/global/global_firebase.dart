@@ -116,18 +116,6 @@ class FireStoreService extends ChangeNotifier {
   }
 }
 
-Future<void> getUser() async {
-  if (currentUser != null) {
-    DocumentSnapshot documentSnapshot =
-        await userCollection.doc(currentUser).get();
-    Map<String, dynamic> doc = documentSnapshot.data();
-    nameController.text = doc["user_name"];
-    emailController.text = doc["user_email"];
-    phoneNumberController.text = (doc["user_phone_number"]).toString();
-    print(emailController.text);
-  }
-}
-
 class RegisterModel {
   String userId;
   String userName;
@@ -185,12 +173,48 @@ Future<bool> checkUserId(String id) async {
   return documentSnapshot.exists;
 }
 
-class validateUser extends StatefulWidget {
+class GetUser extends StatefulWidget {
   @override
-  State<validateUser> createState() => _validateUserState();
+  State<GetUser> createState() => _GetUserState();
 }
 
-class _validateUserState extends State<validateUser> {
+class _GetUserState extends State<GetUser> {
+  void initState() {
+    getUser();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+
+  Future<void> getUser() async {
+    if (currentUser != null) {
+      DocumentSnapshot documentSnapshot =
+          await userCollection.doc(currentUser).get();
+      Map<String, dynamic> doc = documentSnapshot.data();
+      nameController.text = doc["user_name"];
+      emailController.text = doc["user_email"];
+      phoneNumberController.text = (doc["user_phone_number"]).toString();
+      print(emailController.text);
+    }
+  }
+}
+
+class ValidateUser extends StatefulWidget {
+  @override
+  State<ValidateUser> createState() => _ValidateUserState();
+}
+
+class _ValidateUserState extends State<ValidateUser> {
+  void initState() {
+    GetUser();
+    validateUser();
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container();
@@ -254,12 +278,19 @@ class _validateUserState extends State<validateUser> {
   }
 }
 
-class validateUserEntry extends StatefulWidget {
+class ValidateUserEntry extends StatefulWidget {
   @override
-  State<validateUserEntry> createState() => _validateUserEntryState();
+  State<ValidateUserEntry> createState() => _ValidateUserEntryState();
 }
 
-class _validateUserEntryState extends State<validateUserEntry> {
+class _ValidateUserEntryState extends State<ValidateUserEntry> {
+  void initState() {
+    GetUser();
+    validateUserEntry();
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container();
@@ -300,6 +331,13 @@ class RegisterUser extends StatefulWidget {
 }
 
 class _RegisterUserState extends State<RegisterUser> {
+  void initState() {
+    GetUser();
+    registerUser();
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container();
@@ -350,6 +388,13 @@ class UpdateUser extends StatefulWidget {
 }
 
 class _UpdateUserState extends State<UpdateUser> {
+  void initState() {
+    GetUser();
+    updateUser();
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container();
@@ -380,35 +425,4 @@ Future<String> loadImage(BuildContext context, String ID) async {
   return await FirebaseStorage.instance.ref().child("$ID.jpg").getDownloadURL();
 }
 
-// class FireStoreService extends ChangeNotifier {
-//   FireStoreService();
-//
-//   static Future<dynamic> loadImage(BuildContext context, String ID) async {
-//     return await FirebaseStorage.instance
-//         .ref()
-//         .child("$ID.jpg")
-//         .getDownloadURL();
-//   }
-// }
-
 //firebase options
-class DefaultFirebaseOptions {
-  static FirebaseOptions get currentPlatform {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.android:
-        return android;
-      default:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions are not supported for this platform.',
-        );
-    }
-  }
-
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC_61VH6q-rQB5emiF1Sqot7vNW4MWUEpU',
-    appId: '1:531872287724:web:53e6376aba11e0bbd08ec9',
-    messagingSenderId: '531872287724',
-    projectId: 'a015-fvd',
-    storageBucket: 'a015-fvd.appspot.com',
-  );
-}

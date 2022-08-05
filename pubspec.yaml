@@ -17,13 +17,15 @@ dependencies:
   # Firebase Dependencies
   cloud_firestore: ^3.1.17
   firebase_core: ^1.17.1
-  firebase_auth: ^3.3.19
+  firebase_auth: ^3.6.2
   firebase_storage: ^10.2.18
   http: ^0.13.4
+  firebase_auth_platform_interface: ^6.5.2
+
 
   # Other Dependencies
   shared_preferences: ^2.0.15
-  flutter_svg: ^0.20.0-nullsafety.3
+  flutter_svg: ^1.1.2
   provider: ^6.0.3
   flutter_iconly: ^1.0.2
   card_swiper: ^2.0.1
@@ -33,7 +35,7 @@ dependencies:
 
 
   # URL Launcher
-  url_launcher: ^6.1.2
+  url_launcher: ^6.1.5
 
 
   cupertino_icons: ^1.0.2
@@ -42,8 +44,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/categories
-    - assets/darkMode
+    - assets/categories/
+    - assets/darkMode/
+    - assets/appbar/
 
   # fonts:
   #   - family: Schyler

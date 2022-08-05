@@ -1,3 +1,4 @@
+import 'package:a015_fvd/global/global_firebase.dart';
 import 'package:a015_fvd/global/global_variable.dart';
 import 'package:a015_fvd/screen/screen_auth/screen_user_login/screen_user_login.dart';
 import 'package:a015_fvd/screen/screen_home/screen_home.dart';
@@ -195,51 +196,6 @@ class _UserUpdateTextFieldsState extends State<UserUpdateTextFields> {
                 ),
               ),
               SizedBox(
-                height: size.height * 0.02,
-              ),
-              //pass
-              TextFormField(
-                textInputAction: TextInputAction.done,
-                onEditingComplete: () {
-                  UserUpdateButtons();
-                },
-                controller: passwordController,
-                keyboardType: TextInputType.visiblePassword,
-                validator: (value) => validatePassword(value),
-                obscureText: obscureTextData,
-                style: const TextStyle(
-                  color: Color(0xffF5591F),
-                ),
-                cursorColor: Color(0xffF5591F),
-                decoration: InputDecoration(
-                  focusColor: Color(0xffF5591F),
-                  icon: Icon(
-                    Icons.vpn_key,
-                    color: Color(0xffF5591F),
-                  ),
-
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      obscureTextData ? Icons.visibility:
-                      Icons.visibility_off,
-                      color: Color(0xffF5591F),
-                    ),
-                    onPressed:
-                        () {
-                      setState(
-                            () {
-                          obscureTextData = !obscureTextData;
-                        },
-                      );
-                    },
-                  ),
-                  hintText: "Enter Password",
-                  hintStyle: const TextStyle(color: Colors.grey),
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                ),
-              ),
-              SizedBox(
                 height: 70,
               ),
               UserUpdateButtons(),
@@ -266,14 +222,9 @@ class UserUpdateButtons extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            InkWell(
+            isLoading ? CircularProgressIndicator() :InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => HomeScreen(),
-                  ),
-                );
+                UpdateUser();
               },
               child: Container(
                 height: 50,

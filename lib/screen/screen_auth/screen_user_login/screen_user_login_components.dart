@@ -277,7 +277,7 @@ class _UserLoginButtonsState extends State<UserLoginButtons> {
           children: [
             InkWell(
               onTap: () {
-                validateUser();
+                ValidateUser();
               },
               child: Container(
                 height: 50,
