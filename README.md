@@ -1,16 +1,11 @@
 # a015_fvd
 
-A new Flutter project.
+Fresh Basket
 
-## Getting Started
+A Grocery Flutter project.
 
-This project is a starting point for a Flutter application.
+A few resources to get this  Flutter project:
 
-A few rescrs to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [FireBase](https://console.firebase.google.com/u/0/project/a015-fvd/overview/)
+- [GitHub](https://github.com/RishabhSaini619/a015_fvd.git/)
+  

@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'package:a015_fvd/global/global_theme.dart';
 import 'package:a015_fvd/screen/screen_auth/screen_user_login/screen_user_login.dart';
 import 'package:a015_fvd/widget/widget_fetch.dart';
 import 'package:a015_fvd/screen/screen_navigatin_bar/screen_nav.dart';
+import 'package:a015_fvd/widget/widget_text_widget.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -23,33 +25,27 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return Scaffold(
-      body: Container(
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage(
-        //       'assets/images/splash/background.png',
-        //     ),
-        //   ),
-        // ),
-        child: Column(
-          children: [
-            CircularProgressIndicator(
-              value: loadingStatus,
-              strokeWidth: 5,
+      body: Stack(
+
+        children: [
+
+          Container(
+          decoration: BoxDecoration(
+            color: themeData.colorScheme.background,
+          ),
+            child: Stack(
+              children: [
+                Image.asset(darkMode ?'assets/logo/logo_black.png':'assets/logo/logo_white.png'),
+                TextWidget(
+                  tText: "Fresh Basket",
+                  tColor: themeData.colorScheme.onPrimary,
+                  tSize: 20,
+                )
+              ],
             ),
-            Container(
-              child: Text("Loading"),
-              // decoration: BoxDecoration(
-              //   image: DecorationImage(
-              //     image: AssetImage(
-              //       'assets/images/splash/logo.gif',
-              //     ),
-              //   ),
-              // ),
-            ),
-          ],
-        ),
+        ),]
       ),
     );
   }

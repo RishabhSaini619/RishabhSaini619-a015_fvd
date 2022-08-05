@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.digikull.flutter.a015fvd.a015_fvd">
    <application
-        android:label="a015_fvd"
+        android:label="Fresh Basket"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
