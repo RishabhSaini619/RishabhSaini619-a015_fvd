@@ -11,32 +11,32 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  try {
-    await Firebase.initializeApp(
-      options: FirebaseOptions(
-        apiKey: 'AIzaSyC_61VH6q-rQB5emiF1Sqot7vNW4MWUEpU',
-        appId: '1:531872287724:web:53e6376aba11e0bbd08ec9',
-        messagingSenderId: '531872287724',
-        projectId: 'a015-fvd',
-        storageBucket: 'a015-fvd.appspot.com',
-      ),
-    );
-  } catch (e) {
-    print("Unable to load web");
-    print(e);
-  }
+  // try {
+  //   await Firebase.initializeApp(
+  //     options: FirebaseOptions(
+  //       apiKey: 'AIzaSyC_61VH6q-rQB5emiF1Sqot7vNW4MWUEpU',
+  //       appId: '1:531872287724:web:53e6376aba11e0bbd08ec9',
+  //       messagingSenderId: '531872287724',
+  //       projectId: 'a015-fvd',
+  //       storageBucket: 'a015-fvd.appspot.com',
+  //     ),
+  //   );
+  // } catch (e) {
+  //   print("Unable to load web");
+  //   print(e);
+  // }
 
   await ScreenUtil.ensureScreenSize();
   userPreferences = await SharedPreferences.getInstance();
-
-  try {
-    currentUser = userPreferences.getString("userID").toString();
-    print("Successfully fetched currentUser from local storage");
-    print("currentUser is $currentUser");
-  } catch (e) {
-    print("Unable to load current user");
-    print(e);
-  }
+  //
+  // try {
+  //   currentUser = userPreferences.getString("userID").toString();
+  //   print("Successfully fetched currentUser from local storage");
+  //   print("currentUser is $currentUser");
+  // } catch (e) {
+  //   print("Unable to load current user");
+  //   print(e);
+  // }
 
   runApp(MyApp());
 }
