@@ -27,25 +27,24 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     return Scaffold(
-      body: Stack(
-
-        children: [
-
-          Container(
-          decoration: BoxDecoration(
-            color: themeData.colorScheme.background,
-          ),
-            child: Stack(
-              children: [
-                Image.asset(darkMode ?'assets/logo/logo_black.png':'assets/logo/logo_white.png'),
-                TextWidget(
-                  tText: "Fresh Basket",
-                  tColor: themeData.colorScheme.onPrimary,
-                  tSize: 20,
-                )
-              ],
-            ),
-        ),]
+      body: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: themeData.colorScheme.background,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(darkMode
+                ? 'assets/logo/logo_black.png'
+                : 'assets/logo/logo_white.png'),
+            TextWidget(
+              tText: "Fresh Basket",
+              tColor: themeData.colorScheme.onPrimary,
+              tSize: 40,
+            )
+          ],
+        ),
       ),
     );
   }

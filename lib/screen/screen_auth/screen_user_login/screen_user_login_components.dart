@@ -1,10 +1,22 @@
 import 'package:a015_fresh_basket/global/global_firebase.dart';
 import 'package:a015_fresh_basket/global/global_variable.dart';
 import 'package:a015_fresh_basket/screen/screen_auth/screen_user_register/screen_user_register.dart';
-import 'package:a015_fresh_basket/screen/screen_home/screen_home.dart';
 import 'package:a015_fresh_basket/widget/widget_fetch.dart';
+import 'package:a015_fresh_basket/widget/widget_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+class UserLoginScreenAppBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        UserLoginScreenImage(),
+        UserLoginScreenMessage(),
+      ],
+    );
+  }
+}
 
 class UserLoginScreenImage extends StatelessWidget {
   @override
@@ -21,15 +33,26 @@ class UserLoginScreenImage extends StatelessWidget {
 class UserLoginScreenMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ThemeData themeData = Theme.of(context);
-    return Text(
-      'WELCOME Back',
-      textAlign: TextAlign.center,
-      style: TextStyle(
-
-        color: themeData.colorScheme.primary,
-        fontWeight: FontWeight.bold,
-        fontSize: 30.0,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 150, 10, 0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          TextWidget(
+            tText: 'Welcome Back',
+            tCenter: true,
+            tSize: 30,
+            tTitle: true,
+            tColor: Color(0xff547c04),
+          ),
+          TextWidget(
+            tText: 'Log In',
+            tCenter: true,
+            tSize: 30,
+            tColor: Color(0xff547c04),
+          ),
+        ],
       ),
     );
   }
@@ -40,14 +63,12 @@ class UserLoginScreenFields extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 50,
-      ),
+      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
       child: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: themeData.colorScheme.background,
+          color: themeData.colorScheme.background.withOpacity(0.1),
           borderRadius: BorderRadius.circular(
             75,
           ),
@@ -64,8 +85,7 @@ class UserLoginTextFields extends StatefulWidget {
 }
 
 class _UserLoginTextFieldsState extends State<UserLoginTextFields> {
-
-  void initState()  {
+  void initState() {
     if (userCredential != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.pushAndRemoveUntil(
@@ -76,7 +96,7 @@ class _UserLoginTextFieldsState extends State<UserLoginTextFields> {
             (route) => false);
       });
     }
-    userPreferences =  SharedPreferences.getInstance();
+    userPreferences = SharedPreferences.getInstance();
     try {
       String emailFromStorage = userPreferences.getString("userID");
       if (emailFromStorage != null) {
@@ -90,118 +110,91 @@ class _UserLoginTextFieldsState extends State<UserLoginTextFields> {
 
   @override
   Widget build(BuildContext context) {
-    ThemeData themeData = Theme.of(context);
     Size size = MediaQuery.of(context).size;
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
-      child: Container(
-        width: size.width * 10,
-        height: size.height,
-        decoration: BoxDecoration(
-          color: themeData.colorScheme.primary,
-          borderRadius: BorderRadius.circular(
-            75,
+      padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextFormField(
+            textInputAction: TextInputAction.next,
+            controller: emailController,
+            keyboardType: TextInputType.emailAddress,
+            validator: (value) => validateEmail(value),
+            style: const TextStyle(
+              color: Color(0xff547c04), //0xff992e24
+            ),
+            cursorColor: Color(0xff547c04),
+            decoration: InputDecoration(
+              icon: Icon(
+                Icons.email,
+                color: Color(0xffe38501),
+              ),
+              hintText: "Email",
+              hintStyle: const TextStyle(
+                color: Color(0xffe38501),
+              ),
+              enabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
+            ),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(
-                0.2,
+          SizedBox(
+            height: size.height * 0.02,
+          ),
+          TextFormField(
+            textInputAction: TextInputAction.done,
+            onEditingComplete: () {
+              UserLoginButtons();
+            },
+            controller: passwordController,
+            focusNode: passFocusNode,
+            obscureText: obscureTextData,
+            keyboardType: TextInputType.visiblePassword,
+            validator: (value) => validatePassword(value),
+            cursorColor: Color(0xff547c04),
+            style: const TextStyle(
+              color: Color(0xff547c04),
+            ),
+            decoration: InputDecoration(
+              icon: Icon(
+                Icons.vpn_key,
+                color: Color(0xffe38501),
               ),
-              offset: Offset(5, 5),
-              blurRadius: 10,
-            )
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Sign In',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: size.height * 0.04,
-              ),
-              TextFormField(
-                textInputAction: TextInputAction.next,
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) => validateEmail(value),
-                style: const TextStyle(
-                  color: Color(0xffF5591F),
-                ),
-                cursorColor: Color(0xffF5591F),
-                decoration: InputDecoration(
-                  icon: Icon(
-                    Icons.email,
-                    color: Color(0xffF5591F),
-                  ),
-                  hintText: "Email",
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                ),
-              ),
-              SizedBox(
-                height: size.height * 0.02,
-              ),
-              TextFormField(
-                textInputAction: TextInputAction.done,
-                onEditingComplete: () {
-                  UserLoginButtons();
-                },
-                controller: passwordController,
-                focusNode: passFocusNode,
-                obscureText: obscureTextData,
-                keyboardType: TextInputType.visiblePassword,
-                validator: (value) => validatePassword(value),
-                cursorColor: Color(0xffF5591F),
-                style: const TextStyle(
-                  color: Color(0xffF5591F),
-                ),
-                decoration: InputDecoration(
-                  icon: Icon(
-                    Icons.vpn_key,
-                    color: Color(0xffF5591F),
-                  ),
-                  suffixIcon: GestureDetector(
-                    onTap: () {
-                      setState(
-                        () {
-                          obscureTextData = !obscureTextData;
-                        },
-                      );
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  setState(
+                    () {
+                      obscureTextData = !obscureTextData;
                     },
-                    child: Icon(
-                      obscureTextData ? Icons.visibility : Icons.visibility_off,
-                      color: Color(0xffF5591F),
-                    ),
-                  ),
-                  focusColor: Color(0xffF5591F),
-                  hintText: "Enter Password",
-                  hintStyle: const TextStyle(color: Colors.grey),
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
+                  );
+                },
+                child: Icon(
+                  obscureTextData ? Icons.visibility : Icons.visibility_off,
+                  color: Color(0xffe38501),
                 ),
               ),
-              SizedBox(
-                height: size.height * 0.01,
+              focusColor: Color(0xffe38501),
+              hintText: "Enter Password",
+              hintStyle: const TextStyle(
+                color: Color(0xffe38501),
               ),
-              Text(
-                'Forget Password?',
-              ),
-              SizedBox(
-                height: 115,
-              ),
-              UserLoginButtons(),
-            ],
+              enabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
+            ),
           ),
-        ),
+          SizedBox(
+            height: size.height * 0.01,
+          ),
+          TextWidget(
+            tText: 'Forget Password?',
+            tColor: Color(0xff992e24),
+          ),
+          SizedBox(
+            height: 115,
+          ),
+          UserLoginButtons(),
+        ],
       ),
     );
   }
@@ -213,31 +206,6 @@ class UserLoginButtons extends StatefulWidget {
 }
 
 class _UserLoginButtonsState extends State<UserLoginButtons> {
-  void initState() async {
-    if (userCredential != null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => HomeScreen(),
-            ),
-            (route) => false);
-      });
-    }
-    userPreferences = await SharedPreferences.getInstance();
-    try {
-      String emailFromStorage = userPreferences.getString("userID");
-      if (emailFromStorage != null) {
-        emailController.text = emailFromStorage;
-      }
-    } catch (e) {
-      print("Failed to fetch email from local storage");
-    }
-
-    // TODO: implement initState
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
@@ -260,28 +228,21 @@ class _UserLoginButtonsState extends State<UserLoginButtons> {
                 height: 50,
                 width: 50,
                 decoration: BoxDecoration(
-                  color: Color(
-                    0xffca9000,
-                  ),
+                  color: Color(0xff547c04),
                   borderRadius: BorderRadius.circular(
                     45,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: themeData.colorScheme.primary.withOpacity(
-                        0.2,
-                      ),
-                      offset: Offset(
-                        5,
-                        5,
-                      ),
+                      color: Color(0xff547c04).withOpacity(0.2),
+                      offset: Offset(5, 5),
                       blurRadius: 10,
                     )
                   ],
                 ),
                 child: Icon(
                   Icons.arrow_forward_rounded,
-                  color: themeData.colorScheme.background,
+                  color: Color(0xffffff00),
                 ),
               ),
             ),
@@ -291,8 +252,8 @@ class _UserLoginButtonsState extends State<UserLoginButtons> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Don't have an Account?",
+                TextWidget(
+                  tText: "Don't have an Account?",
                 ),
                 InkWell(
                   onTap: () {
@@ -303,15 +264,10 @@ class _UserLoginButtonsState extends State<UserLoginButtons> {
                       ),
                     );
                   },
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      color: Color(
-                        0xffca9000,
-                      ),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
+                  child: TextWidget(
+                    tColor: Color(0xffca9000),
+                    tText: 'Sign Up',
+                    tSize: 16,
                   ),
                 ),
               ],

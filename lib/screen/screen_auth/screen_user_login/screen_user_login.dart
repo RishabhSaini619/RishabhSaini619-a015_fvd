@@ -26,13 +26,8 @@ class _UserLoginScreenState extends State<UserLoginScreen>
     return Scaffold(
       body: ListView(
         children: [
-          Stack(
-            children: [
-              UserLoginScreenImage(),
-              UserLoginScreenMessage(),
-              UserLoginScreenFields(),
-            ],
-          ),
+          UserLoginScreenAppBar(),
+          UserLoginScreenFields(),
         ],
       ),
     );

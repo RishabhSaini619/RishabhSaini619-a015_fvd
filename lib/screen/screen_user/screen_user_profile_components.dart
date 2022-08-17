@@ -51,7 +51,7 @@ class _UserProfileScreenThemeUiSwitchState extends State<UserProfileScreenThemeU
     ThemeData themeData = Theme.of(context);
     return SwitchListTile(
       title: TextWidget(
-        isTitle: true,
+        tTitle: true,
         tText: darkMode ? "Dark Theme" : " Light Theme",
         tColor: themeData.colorScheme.primary,
         tSize: 24,

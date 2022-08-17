@@ -6,23 +6,28 @@ class TextWidget extends StatelessWidget {
     this.tText,
     this.tColor,
     this.tSize,
-    this.isTitle = false,
+    this.tTitle = false,
+    this.tCenter = false,
     this.tMaxLine = 10,
+
   }) : super(key: key);
   final String tText;
   final Color tColor;
   final double tSize;
-  bool isTitle;
+  bool tTitle;
+  bool tCenter ;
   int tMaxLine = 10;
+
   @override
   Widget build(BuildContext context) {
     return Text(
       tText,
       maxLines: tMaxLine,
+      textAlign: tCenter ? TextAlign.center : TextAlign.start,
       style: TextStyle(
         overflow: TextOverflow.ellipsis,
         fontSize: tSize,
-        fontWeight: isTitle ? FontWeight.bold : FontWeight.normal,
+        fontWeight: tTitle ? FontWeight.bold : FontWeight.normal,
         color: tColor,
       ),
     );
