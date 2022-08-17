@@ -29,6 +29,7 @@ class _UserUpdateScreenState extends State<UserUpdateScreen> with SingleTickerPr
         children: [
           Stack(
             children: [
+
               UserUpdateScreenImage(),
               UserUpdateScreenMessage(),
               UserUpdateScreenFields(),

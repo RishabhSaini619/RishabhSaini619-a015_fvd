@@ -26,13 +26,8 @@ class _UserRegisterScreenState extends State<UserRegisterScreen>
     return Scaffold(
       body: ListView(
         children: [
-          Stack(
-            children: [
-              UserRegisterScreenImage(),
-              UserRegisterScreenMessage(),
-              UserRegisterScreenFields(),
-            ],
-          ),
+          UserRegisterScreenAppBar(),
+          UserRegisterScreenFields(),
         ],
       ),
     );

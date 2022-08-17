@@ -85,28 +85,28 @@ class UserLoginTextFields extends StatefulWidget {
 }
 
 class _UserLoginTextFieldsState extends State<UserLoginTextFields> {
-  void initState() {
-    if (userCredential != null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Fetch(),
-            ),
-            (route) => false);
-      });
-    }
-    userPreferences = SharedPreferences.getInstance();
-    try {
-      String emailFromStorage = userPreferences.getString("userID");
-      if (emailFromStorage != null) {
-        emailController.text = emailFromStorage;
-      }
-    } catch (e) {
-      print("Failed to fetch email from local storage");
-    }
-    super.initState();
-  }
+  // void initState() {
+  //   if (userCredential != null) {
+  //     WidgetsBinding.instance.addPostFrameCallback((_) {
+  //       Navigator.pushAndRemoveUntil(
+  //           context,
+  //           MaterialPageRoute(
+  //             builder: (context) => Fetch(),
+  //           ),
+  //           (route) => false);
+  //     });
+  //   }
+  //   userPreferences = SharedPreferences.getInstance();
+  //   try {
+  //     String emailFromStorage = userPreferences.getString("userID");
+  //     if (emailFromStorage != null) {
+  //       emailController.text = emailFromStorage;
+  //     }
+  //   } catch (e) {
+  //     print("Failed to fetch email from local storage");
+  //   }
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -191,7 +191,7 @@ class _UserLoginTextFieldsState extends State<UserLoginTextFields> {
             tColor: Color(0xff992e24),
           ),
           SizedBox(
-            height: 115,
+            height: size.height * 0.25,
           ),
           UserLoginButtons(),
         ],
@@ -208,13 +208,10 @@ class UserLoginButtons extends StatefulWidget {
 class _UserLoginButtonsState extends State<UserLoginButtons> {
   @override
   Widget build(BuildContext context) {
-    ThemeData themeData = Theme.of(context);
     Size size = MediaQuery.of(context).size;
 
     return Padding(
-      padding: const EdgeInsets.all(
-        20,
-      ),
+      padding: const EdgeInsets.all(20),
       child: Container(
         width: size.width,
         child: Column(
@@ -229,15 +226,13 @@ class _UserLoginButtonsState extends State<UserLoginButtons> {
                 width: 50,
                 decoration: BoxDecoration(
                   color: Color(0xff547c04),
-                  borderRadius: BorderRadius.circular(
-                    45,
-                  ),
+                  borderRadius: BorderRadius.circular(45),
                   boxShadow: [
                     BoxShadow(
                       color: Color(0xff547c04).withOpacity(0.2),
                       offset: Offset(5, 5),
                       blurRadius: 10,
-                    )
+                    ),
                   ],
                 ),
                 child: Icon(
