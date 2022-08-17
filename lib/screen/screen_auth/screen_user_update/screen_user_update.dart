@@ -27,14 +27,8 @@ class _UserUpdateScreenState extends State<UserUpdateScreen> with SingleTickerPr
     return Scaffold(
       body: ListView(
         children: [
-          Stack(
-            children: [
-
-              UserUpdateScreenImage(),
-              UserUpdateScreenMessage(),
-              UserUpdateScreenFields(),
-            ],
-          ),
+          UserUpdateScreenAppBar(),
+          UserUpdateScreenFields(),
         ],
       ),
     );

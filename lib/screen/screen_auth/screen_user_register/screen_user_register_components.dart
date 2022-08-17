@@ -3,11 +3,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:a015_fresh_basket/global/global_firebase.dart';
 import 'package:a015_fresh_basket/global/global_variable.dart';
 import 'package:a015_fresh_basket/screen/screen_auth/screen_user_login/screen_user_login.dart';
-import 'package:a015_fresh_basket/screen/screen_home/screen_home.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UserRegisterScreenAppBar extends StatelessWidget {
   @override
@@ -36,7 +34,6 @@ class UserRegisterScreenImage extends StatelessWidget {
 class UserRegisterScreenMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ThemeData themeData = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 150, 10, 0),
       child: Row(
@@ -91,17 +88,12 @@ class UserRegisterTextFields extends StatefulWidget {
 class _UserRegisterTextFieldsState extends State<UserRegisterTextFields> {
   @override
   Widget build(BuildContext context) {
-    ThemeData themeData = Theme.of(context);
     Size size = MediaQuery.of(context).size;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
       child: Column(
-        textDirection: TextDirection.ltr,
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
-        verticalDirection: VerticalDirection.down,
         children: [
           //name
           TextFormField(
@@ -261,7 +253,6 @@ class _UserRegisterButtonsState extends State<UserRegisterButtons> {
         width: size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             InkWell(
               onTap: () {
