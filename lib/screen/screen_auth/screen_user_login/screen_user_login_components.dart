@@ -22,25 +22,14 @@ class UserLoginScreenMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
-    return Padding(
-      padding: EdgeInsets.only(
-        top: 50,
-        left: 50,
-        right: 50,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            'WELCOME Back',
-            style: TextStyle(
-              color: themeData.colorScheme.primary,
-              fontWeight: FontWeight.bold,
-              fontSize: 30.0,
-            ),
-          ),
-        ],
+    return Text(
+      'WELCOME Back',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+
+        color: themeData.colorScheme.primary,
+        fontWeight: FontWeight.bold,
+        fontSize: 30.0,
       ),
     );
   }
@@ -52,7 +41,7 @@ class UserLoginScreenFields extends StatelessWidget {
     ThemeData themeData = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.only(
-        top: 150,
+        top: 50,
       ),
       child: Container(
         height: MediaQuery.of(context).size.height,
@@ -75,7 +64,8 @@ class UserLoginTextFields extends StatefulWidget {
 }
 
 class _UserLoginTextFieldsState extends State<UserLoginTextFields> {
-  void initState() async {
+
+  void initState()  {
     if (userCredential != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.pushAndRemoveUntil(
@@ -86,7 +76,7 @@ class _UserLoginTextFieldsState extends State<UserLoginTextFields> {
             (route) => false);
       });
     }
-    userPreferences = await SharedPreferences.getInstance();
+    userPreferences =  SharedPreferences.getInstance();
     try {
       String emailFromStorage = userPreferences.getString("userID");
       if (emailFromStorage != null) {
@@ -95,8 +85,6 @@ class _UserLoginTextFieldsState extends State<UserLoginTextFields> {
     } catch (e) {
       print("Failed to fetch email from local storage");
     }
-
-    // TODO: implement initState
     super.initState();
   }
 
@@ -106,12 +94,7 @@ class _UserLoginTextFieldsState extends State<UserLoginTextFields> {
     Size size = MediaQuery.of(context).size;
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        30,
-        30,
-        30,
-        30,
-      ),
+      padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
       child: Container(
         width: size.width * 10,
         height: size.height,
@@ -125,21 +108,13 @@ class _UserLoginTextFieldsState extends State<UserLoginTextFields> {
               color: Colors.black.withOpacity(
                 0.2,
               ),
-              offset: Offset(
-                5,
-                5,
-              ),
+              offset: Offset(5, 5),
               blurRadius: 10,
             )
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(
-            20,
-            50,
-            20,
-            20,
-          ),
+          padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
