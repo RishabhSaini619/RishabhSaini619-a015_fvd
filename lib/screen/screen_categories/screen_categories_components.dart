@@ -3,15 +3,48 @@ import 'package:a015_fresh_basket/global/global_variable.dart';
 import 'package:a015_fresh_basket/screen/screen_inner/inner_screen_product_detail_view/inner_screen_product_detail_view.dart';
 import 'package:a015_fresh_basket/screen/screen_inner/inner_screen_viewall/inner_screen_viewall.dart';
 import 'package:a015_fresh_basket/screen/screen_inner/inner_screen_viewall/inner_screen_viewall_components.dart';
+import 'package:a015_fresh_basket/widget/widget_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CategoriesScreenAppBarImage extends StatelessWidget {
+class CategoriesScreenAppBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        CategoriesScreenImage(),
+        CategoriesScreenMessage(),
+      ],
+    );
+  }
+}
+
+class CategoriesScreenImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image(
-      fit: BoxFit.fitHeight,
+      height: MediaQuery.of(context).size.height * 0.175,
+      width: MediaQuery.of(context).size.width,
+      fit: BoxFit.fill,
       image: AssetImage('assets/appbar/categories.png'),
+    );
+  }
+}
+
+class CategoriesScreenMessage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 60),
+      child: Center(
+        child: TextWidget(
+          tText: 'Categories',
+          tCenter: true,
+          tSize: 45,
+          tTitle: true,
+          tColor: Colors.white,
+        ),
+      ),
     );
   }
 }
@@ -26,13 +59,17 @@ class _CategoriesScreenListState extends State<CategoriesScreenList> {
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
 
-    return ListView.builder(
-      shrinkWrap: true,
-      scrollDirection: Axis.vertical,
-      itemCount: allCategories.length,
-      itemBuilder: (context, index) {
-        return Center(
-          child: GestureDetector(
+    return Flexible(
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+        ),
+        // shrinkWrap: true,
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: allCategories.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
@@ -46,10 +83,9 @@ class _CategoriesScreenListState extends State<CategoriesScreenList> {
               );
             },
             child: Container(
-              margin: EdgeInsets.only(left: 5.h, right: 5.h),
-              width: 130.h,
+              margin: EdgeInsets.fromLTRB(10, 10, 10,10),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.h),
+                borderRadius: BorderRadius.circular(45),
                 color: Colors.white,
                 border: Border.all(
                   color: Colors.grey[100],
@@ -62,31 +98,28 @@ class _CategoriesScreenListState extends State<CategoriesScreenList> {
                   ),
                 ],
               ),
-              child: Padding(
-                padding: EdgeInsets.only(left: 20, top: 15, bottom: 15),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      allCategories[index]["image"],
-                      height: 20.0,
-                      width: 20.0,
-                      color: themeData.colorScheme.primary.withOpacity(0.6),
-                    ),
-                    SizedBox(width: 20),
-                    Text(
-                      "${allCategories[index]["name"]}",
-                      style: TextStyle(
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    allCategories[index]["image"],
+                    height: 100,
+                    width: 100,
+                    color: themeData.colorScheme.primary),
+                  SizedBox(width: 20),
+                  TextWidget(
+                    tText: "${allCategories[index]["name"]}",
+                    tColor: themeData.colorScheme.primary,
+                    tSize: 20,
+                    tCenter: true,
+                    tTitle: true,
+                  ),
+                ],
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

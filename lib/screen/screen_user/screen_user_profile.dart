@@ -25,9 +25,13 @@ class _UserProfileScreenState extends State<UserProfileScreen>
   @override
   Widget build(BuildContext context) {
     return Column(
+
+      verticalDirection: VerticalDirection.down,
+      mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        UserProfileScreenAppBarImage(),
+        UserProfileScreenAppBar(),
         UserProfileScreenUpdateProfileButton(),
         UserProfileScreenThemeUiSwitch(),
         UserExit(),

@@ -28,7 +28,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
     return Scaffold(
       body: Column(
         children: [
-          CategoriesScreenAppBarImage(),
+          CategoriesScreenAppBar(),
           CategoriesScreenList(),
         ],
       ),

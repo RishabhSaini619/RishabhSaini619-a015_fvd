@@ -27,16 +27,11 @@ class _SearchScreenState extends State<SearchScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SearchScreenAppBar(),
-            SizedBox(
-              height: 20,
-            ),
-            SearchScreenResult(),
-          ],
-        ),
+      body: ListView(
+        children: [
+          SearchScreenAppBar(),
+          SearchScreenResult(),
+        ],
       ),
     );
   }

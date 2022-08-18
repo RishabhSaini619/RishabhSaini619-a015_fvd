@@ -53,7 +53,7 @@ List<Map> allCategories = [
   //Fruits
   {
     "name": "Fruits",
-    "image": "assets/categories/fruits.png/",
+    "image": "assets/categories/fruits.png",
     "category": fruits,
     "idList": fruitsID
   },

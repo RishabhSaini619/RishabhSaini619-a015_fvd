@@ -1,7 +1,20 @@
+import 'package:a015_fresh_basket/global/global_firebase.dart';
 import 'package:a015_fresh_basket/global/global_theme.dart';
 import 'package:a015_fresh_basket/screen/screen_auth/screen_user_update/screen_user_update.dart';
 import 'package:a015_fresh_basket/widget/widget_text_widget.dart';
 import 'package:flutter/material.dart';
+
+class UserProfileScreenAppBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        UserProfileScreenAppBarImage(),
+        UserProfileScreenAppBarMessage(),
+      ],
+    );
+  }
+}
 
 class UserProfileScreenAppBarImage extends StatelessWidget {
   @override
@@ -12,8 +25,33 @@ class UserProfileScreenAppBarImage extends StatelessWidget {
     );
   }
 }
-class UserProfileScreenUpdateProfileButton extends StatelessWidget {
 
+class UserProfileScreenAppBarMessage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextWidget(
+          tText: 'Hi',
+          tCenter: true,
+          tSize: 30,
+          tTitle: true,
+          tColor: Color(0xff547c04),
+        ),
+        TextWidget(
+          tText: '$userName',
+          tCenter: true,
+          tSize: 30,
+          tColor: Color(0xff547c04),
+        ),
+      ],
+    );
+  }
+}
+
+class UserProfileScreenUpdateProfileButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
@@ -42,10 +80,12 @@ class UserProfileScreenUpdateProfileButton extends StatelessWidget {
 
 class UserProfileScreenThemeUiSwitch extends StatefulWidget {
   @override
-  State<UserProfileScreenThemeUiSwitch> createState() => _UserProfileScreenThemeUiSwitchState();
+  State<UserProfileScreenThemeUiSwitch> createState() =>
+      _UserProfileScreenThemeUiSwitchState();
 }
 
-class _UserProfileScreenThemeUiSwitchState extends State<UserProfileScreenThemeUiSwitch> {
+class _UserProfileScreenThemeUiSwitchState
+    extends State<UserProfileScreenThemeUiSwitch> {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);

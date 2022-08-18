@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchScreenAppBar extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -14,7 +13,6 @@ class SearchScreenAppBar extends StatelessWidget {
         SearchScreenAppBarImage(),
         SearchScreenAppBarSearchField(),
       ],
-
     );
   }
 }
@@ -22,56 +20,71 @@ class SearchScreenAppBar extends StatelessWidget {
 class SearchScreenAppBarImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Image(
-      fit: BoxFit.fitHeight,
+      height: MediaQuery.of(context).size.height*0.175,
+      width: MediaQuery.of(context).size.width,
+      fit: BoxFit.fill,
       image: AssetImage('assets/appbar/search.png'),
     );
   }
 }
 
 class SearchScreenAppBarSearchField extends StatefulWidget {
-
   @override
-  State<SearchScreenAppBarSearchField> createState() => _SearchScreenAppBarSearchFieldState();
+  State<SearchScreenAppBarSearchField> createState() =>
+      _SearchScreenAppBarSearchFieldState();
 }
 
-class _SearchScreenAppBarSearchFieldState extends State<SearchScreenAppBarSearchField> {
+class _SearchScreenAppBarSearchFieldState
+    extends State<SearchScreenAppBarSearchField> {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
-    return TextField(
-      controller: searchController,
-      cursorColor: themeData.colorScheme.primary,
-      onChanged: (value) {
-        searchResults = allDocumentsData
-            .where((element) => (element["product_name"].toLowerCase())
-            .contains(value.toLowerCase()))
-            .toSet()
-            .toList();
-
-        setState(() {});
-      },
-      decoration: InputDecoration(
-        prefixIcon: Icon(
-          Icons.search,
-          color: themeData.colorScheme.primary,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(90),
         ),
-        suffixIcon: IconButton(
-          icon: Icon(
-            Icons.clear,
-          ),
-          color: themeData.colorScheme.primary,
-          onPressed: () {
-            searchController.text = "";
+        child: TextFormField(
+          controller: searchController,
+          cursorColor: themeData.colorScheme.primary,
+          onChanged: (value) {
+            searchResults = allDocumentsData
+                .where((element) => (element["product_name"].toLowerCase())
+                    .contains(value.toLowerCase()))
+                .toSet()
+                .toList();
 
             setState(() {});
           },
+          decoration: InputDecoration(
+            prefixIcon: Icon(
+              Icons.search,
+              color: themeData.colorScheme.primary,
+            ),
+            suffixIcon: IconButton(
+              icon: Icon(
+                Icons.clear,
+              ),
+              color: themeData.colorScheme.primary,
+              onPressed: () {
+                searchController.text = "";
+
+                setState(() {});
+              },
+            ),
+            hintText: 'Search...',
+            hintStyle: TextStyle(
+              color: themeData.colorScheme.primary,
+            ),
+            border: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            focusedBorder: InputBorder.none,
+          ),
         ),
-        hintText: 'Search...',
-        hintStyle: TextStyle(
-          color: themeData.colorScheme.primary,
-        ),
-        border: InputBorder.none,
       ),
     );
   }
@@ -157,4 +170,3 @@ class _SearchScreenResultState extends State<SearchScreenResult> {
     );
   }
 }
-

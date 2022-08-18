@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:a015_fresh_basket/global/global_theme.dart';
 import 'package:a015_fresh_basket/screen/screen_auth/screen_user_login/screen_user_login.dart';
 import 'package:a015_fresh_basket/screen/screen_auth/screen_user_update/screen_user_update.dart';
+import 'package:a015_fresh_basket/screen/screen_user/screen_user_profile.dart';
 import 'package:a015_fresh_basket/widget/widget_fetch.dart';
 import 'package:a015_fresh_basket/screen/screen_navigatin_bar/screen_nav.dart';
 import 'package:a015_fresh_basket/widget/widget_text_widget.dart';
@@ -54,9 +55,9 @@ class _SplashScreenState extends State<SplashScreen> {
     return Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => UserUpdateScreen(),
+        builder: (context) => Fetch(),
         //UserLoginScreen
-        // LoginScreen(),
+
       ),
     );
   }
