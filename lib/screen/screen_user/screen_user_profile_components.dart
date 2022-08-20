@@ -62,7 +62,7 @@ class UserProfileScreenUpdateProfileButton extends StatelessWidget {
     ThemeData themeData = Theme.of(context);
     return InkWell(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(77, 10, 30, 10),
+        padding: const EdgeInsets.fromLTRB(70, 10, 30, 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -103,7 +103,7 @@ class _UserProfileScreenThemeUiSwitchState
     return SwitchListTile(
       title: TextWidget(
         tTitle: true,
-        tText: darkMode ? "Dark Theme" : " Light Theme",
+        tText: darkMode ? "Dark Theme" : "Light Theme",
         tColor: themeData.colorScheme.primary,
         tSize: 24,
       ),
@@ -119,12 +119,12 @@ class _UserProfileScreenThemeUiSwitchState
       inactiveThumbColor: Colors.white,
       inactiveTrackColor: Colors.grey,
       inactiveThumbImage: const AssetImage("assets/darkMode/sunIcon.png"),
+      value: darkMode,
       onChanged: (bool value) {
         setState(() {
           darkMode = value;
         });
       },
-      value: darkMode,
     );
   }
 }

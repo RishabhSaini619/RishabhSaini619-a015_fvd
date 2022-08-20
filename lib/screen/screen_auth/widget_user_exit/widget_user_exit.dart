@@ -25,7 +25,7 @@ class _UserExitState extends State<UserExit> {
 
     return InkWell(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(77, 10, 27.5, 10),
+        padding: const EdgeInsets.fromLTRB(70, 10, 27.5, 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -31,50 +31,65 @@ class _HomeScreenState extends State<HomeScreen>
     ThemeData themeData = Theme.of(context);
     return Scaffold(
       body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 10.h,
-              ),
-              // Fruits
-              FruitsContainer(),
-              SizedBox(
-                height: 10.h,
-              ),
-              // Vegetable
-              VegetablesContainer(),
-              SizedBox(
-                height: 10.h,
-              ),
-              // Daily
-              DailyContainer(),
-              SizedBox(
-                height: 10.h,
-              ),
-              // Grains
-              GrainsContainer(),
-              SizedBox(
-                height: 10.h,
-              ),
-              // other Categories
-              SizedBox(
-                height: 20.h,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 25.h,
-                  ),
-                  child: Divider(
-                    thickness: 1.h,
-                    color: themeData.colorScheme.primary.withOpacity(
-                      0.2,
-                    ),
-                  ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            HomeScreenBanner(),
+            SizedBox(
+              height: 10.h,
+              child: Divider(
+                thickness: 2,
+                color: themeData.colorScheme.primary.withOpacity(
+                  0.2,
                 ),
               ),
-            ],
-          ),
+            ),
+            // Fruits
+            FruitsContainer(),
+            SizedBox(
+              height: 10.h,
+              child: Divider(
+                thickness: 2,
+                color: themeData.colorScheme.primary.withOpacity(
+                  0.2,
+                ),
+              ),
+            ),
+            // Vegetable
+            VegetablesContainer(),
+            SizedBox(
+              height: 10.h,
+              child: Divider(
+                thickness: 2,
+                color: themeData.colorScheme.primary.withOpacity(
+                  0.2,
+                ),
+              ),
+            ),
+            // Daily
+            DailyContainer(),
+            SizedBox(
+              height: 10.h,
+              child: Divider(
+                thickness: 2,
+                color: themeData.colorScheme.primary.withOpacity(
+                  0.2,
+                ),
+              ),
+            ),
+            // Grains
+            GrainsContainer(),
+            SizedBox(
+              height: 10.h,
+              child: Divider(
+                thickness: 2,
+                color: themeData.colorScheme.primary.withOpacity(
+                  0.2,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

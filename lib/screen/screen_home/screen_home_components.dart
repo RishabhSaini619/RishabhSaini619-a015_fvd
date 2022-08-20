@@ -3,6 +3,7 @@ import 'package:a015_fresh_basket/global/global_variable.dart';
 import 'package:a015_fresh_basket/screen/screen_inner/inner_screen_viewall/inner_screen_viewall_components.dart';
 import 'package:a015_fresh_basket/widget/widget_inner_product_thumbnail.dart';
 import 'package:a015_fresh_basket/screen/screen_inner/inner_screen_viewall/inner_screen_viewall.dart';
+import 'package:a015_fresh_basket/widget/widget_text_widget.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,12 +46,11 @@ class FruitsContainer extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.all(8.h),
-              child: Text(
-                "Fruits",
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15.sp,
-                    letterSpacing: 0.5),
+              child: TextWidget(
+                tText: "Fruits",
+                tSize: 20,
+                tTitle: true,
+                tColor: themeData.colorScheme.primary,
               ),
             ),
             Padding(
@@ -77,9 +77,10 @@ class FruitsContainer extends StatelessWidget {
                   backgroundColor: MaterialStateProperty.all(
                       themeData.colorScheme.primary.withOpacity(0.1)),
                 ),
-                child: Text(
-                  "View all".toUpperCase(),
-                  style: TextStyle(color: themeData.colorScheme.primary),
+                child: TextWidget(
+                  tText: "View all".toUpperCase(),
+                  tSize: 15,
+                  tColor: themeData.colorScheme.primary,
                 ),
               ),
             )
@@ -117,12 +118,11 @@ class VegetablesContainer extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.all(8.h),
-              child: Text(
-                "Vegetable",
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15.sp,
-                    letterSpacing: 0.5),
+              child: TextWidget(
+                tText: "Vegetable",
+                tSize: 20,
+                tTitle: true,
+                tColor: themeData.colorScheme.primary,
               ),
             ),
             Padding(
@@ -149,9 +149,10 @@ class VegetablesContainer extends StatelessWidget {
                   backgroundColor: MaterialStateProperty.all(
                       themeData.colorScheme.primary.withOpacity(0.1)),
                 ),
-                child: Text(
-                  "View all".toUpperCase(),
-                  style: TextStyle(color: themeData.colorScheme.primary),
+                child: TextWidget(
+                  tText: "View all".toUpperCase(),
+                  tSize: 15,
+                  tColor: themeData.colorScheme.primary,
                 ),
               ),
             )
@@ -188,12 +189,11 @@ class DailyContainer extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.all(8.h),
-              child: Text(
-                "Daily",
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15.sp,
-                    letterSpacing: 0.5),
+              child: TextWidget(
+                tText: "Daily",
+                tSize: 20,
+                tTitle: true,
+                tColor: themeData.colorScheme.primary,
               ),
             ),
             Padding(
@@ -220,9 +220,10 @@ class DailyContainer extends StatelessWidget {
                   backgroundColor: MaterialStateProperty.all(
                       themeData.colorScheme.primary.withOpacity(0.1)),
                 ),
-                child: Text(
-                  "View all".toUpperCase(),
-                  style: TextStyle(color: themeData.colorScheme.primary),
+                child: TextWidget(
+                  tText: "View all".toUpperCase(),
+                  tSize: 15,
+                  tColor: themeData.colorScheme.primary,
                 ),
               ),
             )
@@ -257,12 +258,11 @@ class GrainsContainer extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.all(8.h),
-              child: Text(
-                "Grains",
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15.sp,
-                    letterSpacing: 0.5),
+              child: TextWidget(
+                tText: "Grains",
+                tSize: 20,
+                tTitle: true,
+                tColor: themeData.colorScheme.primary,
               ),
             ),
             Padding(
@@ -289,9 +289,10 @@ class GrainsContainer extends StatelessWidget {
                   backgroundColor: MaterialStateProperty.all(
                       themeData.colorScheme.primary.withOpacity(0.1)),
                 ),
-                child: Text(
-                  "View all".toUpperCase(),
-                  style: TextStyle(color: themeData.colorScheme.primary),
+                child: TextWidget(
+                  tText: "View all".toUpperCase(),
+                  tSize: 15,
+                  tColor: themeData.colorScheme.primary,
                 ),
               ),
             )

@@ -45,9 +45,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FVD',
+      title: 'Fresh Basket',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: SplashScreen(),
     );
