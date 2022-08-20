@@ -24,18 +24,36 @@ class _UserProfileScreenState extends State<UserProfileScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    ThemeData themeData = Theme.of(context);
 
-      verticalDirection: VerticalDirection.down,
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        UserProfileScreenAppBar(),
-        UserProfileScreenUpdateProfileButton(),
-        UserProfileScreenThemeUiSwitch(),
-        UserExit(),
-      ],
+    return Scaffold(
+      body: Column(
+        children: [
+          UserProfileScreenAppBar(),
+
+          UserProfileScreenThemeUiSwitch(),
+          Divider(
+            thickness: 2,
+            color: themeData.colorScheme.primary.withOpacity(
+              0.2,
+            ),
+          ),
+          UserProfileScreenUpdateProfileButton(),
+          Divider(
+            thickness: 2,
+            color: themeData.colorScheme.primary.withOpacity(
+              0.2,
+            ),
+          ),
+          UserExit(),
+          Divider(
+            thickness: 2,
+            color: themeData.colorScheme.primary.withOpacity(
+              0.2
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

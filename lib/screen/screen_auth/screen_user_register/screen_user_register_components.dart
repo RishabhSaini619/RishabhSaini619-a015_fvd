@@ -256,6 +256,7 @@ class _UserRegisterButtonsState extends State<UserRegisterButtons> {
           children: [
             InkWell(
               onTap: () {
+                print("Register button pressed");
                 ValidateUserEntry();
               },
               child: Container(

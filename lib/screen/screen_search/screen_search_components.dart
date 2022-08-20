@@ -20,9 +20,8 @@ class SearchScreenAppBar extends StatelessWidget {
 class SearchScreenAppBarImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Image(
-      height: MediaQuery.of(context).size.height*0.175,
+      height: MediaQuery.of(context).size.height * 0.1,
       width: MediaQuery.of(context).size.width,
       fit: BoxFit.fill,
       image: AssetImage('assets/appbar/search.png'),
@@ -42,7 +41,7 @@ class _SearchScreenAppBarSearchFieldState
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
+      padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -81,8 +80,6 @@ class _SearchScreenAppBarSearchFieldState
               color: themeData.colorScheme.primary,
             ),
             border: InputBorder.none,
-            enabledBorder: InputBorder.none,
-            focusedBorder: InputBorder.none,
           ),
         ),
       ),
@@ -123,7 +120,6 @@ class _SearchScreenResultState extends State<SearchScreenResult> {
             );
           },
           child: Container(
-            height: 50.h,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
@@ -134,7 +130,7 @@ class _SearchScreenResultState extends State<SearchScreenResult> {
               ],
             ),
             padding: EdgeInsets.symmetric(
-              vertical: 8.h,
+              vertical: 20.h,
               horizontal: 20.h,
             ),
             margin: EdgeInsets.symmetric(

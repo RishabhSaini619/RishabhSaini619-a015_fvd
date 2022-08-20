@@ -23,7 +23,7 @@ class CategoriesScreenImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image(
-      height: MediaQuery.of(context).size.height * 0.175,
+      height: MediaQuery.of(context).size.height * 0.1,
       width: MediaQuery.of(context).size.width,
       fit: BoxFit.fill,
       image: AssetImage('assets/appbar/categories.png'),
@@ -35,12 +35,12 @@ class CategoriesScreenMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 60),
+      padding: const EdgeInsets.only(top: 40),
       child: Center(
         child: TextWidget(
           tText: 'Categories',
           tCenter: true,
-          tSize: 45,
+          tSize: 30,
           tTitle: true,
           tColor: Colors.white,
         ),

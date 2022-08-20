@@ -17,7 +17,7 @@ class NavigationBarScreen extends StatefulWidget {
 
 class _NavigationBarState extends State<NavigationBarScreen>
     with SingleTickerProviderStateMixin {
-  int selectedScreenIndex = 0;
+  int selectedScreenIndex = 2;
   final List<Map<String, dynamic>> NavigationScreen = [
     {'screen': SearchScreen(), 'title': 'Search'},
     {'screen': CategoriesScreen(), 'title': 'Categories'},

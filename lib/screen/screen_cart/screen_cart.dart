@@ -37,7 +37,7 @@ class _CartScreenState extends State<CartScreen>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CartScreenAppBarImage(),
+              CartScreenAppBar(),
               CartScreenProduct(),
               CartScreenProductPrice(),
               CartScreenProductBuyNow(),

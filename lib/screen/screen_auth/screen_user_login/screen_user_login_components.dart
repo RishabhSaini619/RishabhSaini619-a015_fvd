@@ -219,6 +219,7 @@ class _UserLoginButtonsState extends State<UserLoginButtons> {
           children: [
             InkWell(
               onTap: () {
+                print("Login button pressed");
                 ValidateUser();
               },
               child: Container(

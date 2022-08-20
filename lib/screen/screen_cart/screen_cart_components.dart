@@ -2,16 +2,49 @@ import 'package:a015_fresh_basket/global/global_firebase.dart';
 import 'package:a015_fresh_basket/global/global_variable.dart';
 import 'package:a015_fresh_basket/screen/screen_inner/inner_screen_product_detail_view/inner_screen_product_detail_view_components.dart';
 import 'package:a015_fresh_basket/screen/screen_inner/widget_product_item.dart';
+import 'package:a015_fresh_basket/widget/widget_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
-class CartScreenAppBarImage extends StatelessWidget {
+class CartScreenAppBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        CartScreenImage(),
+        CartScreenMessage(),
+      ],
+    );
+  }
+}
+
+class CartScreenImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image(
-      fit: BoxFit.fitHeight,
+      height: MediaQuery.of(context).size.height * 0.1,
+      width: MediaQuery.of(context).size.width,
+      fit: BoxFit.fill,
       image: AssetImage('assets/appbar/cart.png'),
+    );
+  }
+}
+
+class CartScreenMessage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 40),
+      child: Center(
+        child: TextWidget(
+          tText: 'Cart',
+          tCenter: true,
+          tSize: 30,
+          tTitle: true,
+          tColor: Colors.white,
+        ),
+      ),
     );
   }
 }
@@ -19,8 +52,15 @@ class CartScreenAppBarImage extends StatelessWidget {
 class CartScreenProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return cartItems.length < 1
-        ? Text("Nothing in cart")
+        ? TextWidget(
+            tText: "Nothing in cart",
+            tTitle: true,
+            tSize: 20,
+            tCenter: true,
+            tColor: themeData.colorScheme.primary,
+          )
         : Expanded(
             child: ListView.separated(
               separatorBuilder: (context, index) => Divider(),
